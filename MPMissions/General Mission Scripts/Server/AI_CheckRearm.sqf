@@ -50,10 +50,8 @@ if (_unit == driver vehicle _unit) then
 				{
 					if ( (_sabots select _index) in _rearmMags ) then
 					{
-						if ( ("_x == (_sabots select _index)" count (magazines _v) < 1) || ((_v ammo (_guns select _index)) < ((call grpSetting) select aisAutoRearmSabot)) ) then
-						{
-							_rearm = true;
-						};
+						if ("_x == (_sabots select _index)" count (magazines _v) < 1) then {_rearm = true};
+						if ((_v ammo (_guns select _index)) < ((call grpSetting) select aisAutoRearmSabot)) then {_rearm = true};
 					};
 					_index = _index + 1;
 				};
