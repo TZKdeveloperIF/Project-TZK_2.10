@@ -6,7 +6,7 @@ _type = (_this select 2) select 0
 _dirStruct = 15*( 0 + ((_this select 2) select 1) )
 
 ? !(alive _unit) : exit
-? _unit != vehicle _unit : if (_unit == driver _unit) then {_unit groupChat "Only allow asking infantry to do this."; exit}
+? _unit != vehicle _unit : if (_unit == driver _unit) then {_unit groupChat "Only allow asking infantry to do this."}; exit
 
 _si = siPlayer; _desc = structDefs select _type
 ? _desc select sdOnlyCO : if (groupPlayer != (groupCommander select siPlayer)) then {_unit groupChat "Only allow Commander to build this."; exit}

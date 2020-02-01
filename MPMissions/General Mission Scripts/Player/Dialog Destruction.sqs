@@ -32,7 +32,7 @@ ctrlSetText [_idcAction2, "Undo"]
 ctrlSetText [_idcListHeader, "Struct & worker must be in working CC's range."]
 
 
-_res = [_idcList] call funcUpdateDialogDestruction
+_res = [_idcList, _idcAction4Label] call funcUpdateDialogDestruction
 _structsDisp = _res select 0; _MCVs = _res select 1
 
 lbSetCurSel [_idcList, 0]
@@ -44,7 +44,7 @@ lbSetCurSel [_idcList, 0]
   ? !(dialog) : exit
   ? !(alive player) : closeDialog 0; exit
 
-	_res = [_idcList] call funcUpdateDialogDestruction
+	_res = [_idcList, _idcAction4Label] call funcUpdateDialogDestruction
 	_structsDisp = _res select 0; _MCVs = _res select 1
 	
   ? (btnAction0): btnAction0=false; goto "DeleteStructure"

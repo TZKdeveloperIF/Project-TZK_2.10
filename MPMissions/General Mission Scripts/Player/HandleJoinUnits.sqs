@@ -30,4 +30,7 @@ _units join groupPlayer
 		
 	_cost = 0; _type = -1; { _type = _x call funcgetunittypefromobject; if (_type >= maxUnitTypes || _type < 0) then {_cost = (unitDefs select (utCustom select _si)) select udCost} else {_cost = (unitDefs select _type) select udCost; [_x, _si, _cost] exec "Common\EventAdd_InfantryKilled.sqs"} } forEach _unitsJoint
 
+~1
+pvJoinTried = 1; publicVariable "pvJoinTried"
+;
 ; EOF

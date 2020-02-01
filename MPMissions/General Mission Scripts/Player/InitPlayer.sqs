@@ -331,6 +331,10 @@ _param0 = ["Structure Type", count structDefs, "format[""%1"", (structDefs selec
 _param1 = ["Angle", 24, "format[""%1%2"", 15*(_this), [["" (N)"", "" (NE)"", "" (E)"", "" (SE)"", "" (S)"", "" (SW)"", "" (W)"", "" (NW)""] select ((_this - (_this mod 3))/3), {}] select (_this mod 3 != 0)]", 0]
 aiOrders set [_type, ["Build Struct", [_param0, _param1], false, "Order BuildStructure.sqs", _desc] ]; _type = _type + 1
 
+_desc = "Ask your group member get close to MHQ (MCV not support yet) to buy workers. Each members will buy workers independently if you send order to multiple units."
+_param0 = ["Workers Num", 10, "format[""%1"", 1+_this]", 0]
+aiOrders set [_type, ["Buy Workers", [_param0], false, "Order BuyWorkers.sqs", _desc] ]; _type = _type + 1
+
 _desc = "Force selected units to join other group. Custom soldiers may perform abnormal when they go rearm after having jointed other groups."
 _param0 = ["Group", count callsigns, "format[""%1"", callsigns select _this]", -1]
 aiOrders set [_type, ["Join", [_param0], true, "Order Join.sqs", _desc] ]; _type = _type + 1

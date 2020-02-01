@@ -1,11 +1,14 @@
-// args: [_idcList]
+// args: [_idcList, _idcAction4Label]
 // return: [_structsDisp, _MCVs]
 
-private ["_idcList", "_MCVs", "_index", "_count", "_textPos", "_structsDisp", 
+private ["_idcList", "_idcAction4Label", 
+"_MCVs", "_index", "_count", "_textPos", "_structsDisp", 
 "_x", "_type", "_name", "_image", "_structs", "_CommandCenters", "_workers", "_engineers", 
 "_struct", "_text", "_id" ];
 
 _idcList = _this select 0;
+_idcAction4Label = _this select 1;
+ctrlShow [_idcAction4Label, true]; ctrlSetText [ _idcAction4Label, format ["Workers %1/%2", [pvWorkers0, pvWorkers1] select siPlayer, maxWorkers select siPlayer] ];
 
 _MCVs = MCV select siPlayer;
 

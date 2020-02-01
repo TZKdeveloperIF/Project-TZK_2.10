@@ -79,9 +79,19 @@ if (((groupMatrix select _si) select _giTo) in (groupAiMatrix select _si)) then 
 
 #DONE	
 ; Wait till Join Process completed
-@( count (units _groupJoin) == 1 )
+@( count (units _groupJoin) == 1 || pvJoinTried != -1 )
 
+; Join might fail on client sometimes.
+? count (units _groupJoin) == 1 : goto "QUIT"
+
+_units = ((units _groupJoin) - [_leaderJoin]); {_x setPos (getPos _x)} forEach _units
+~2
+{deleteVehicle _x} forEach _units
+
+#QUIT
 ; ? ((groupMatrix select _si) select _giFrom) in (groupAiMatrix select _si) && !(((groupMatrix select _si) select _giTo) in (groupAiMatrix select _si)) : { if !(_x in (units ((groupMatrix select _si) select _giFrom))) then {_x removeAllEventHandlers "Killed"} } forEach _units
 
 ~1
-mutexJoinServer = false
+pvJoinTried = -1; mutexJoinServer = false
+
+; EOF
