@@ -1,5 +1,8 @@
 ; args: [shell, Fired-EH Array]
 
+; turn off fired effects
+exit
+
 _shot = _this select 0
 _FiredArray = _this select 1
 
