@@ -527,7 +527,7 @@ _type = _type + 1
 
 _price = [5000, 10000] select PricingMode
 unitDefs set [_type, ["C130 Support", _price, _si, 60, "C130_Support_xj200", "\TZK_Objects\Texture\C130.paa", _st, [1, _pilotW], _mSupport, ["Common\InitSpawnPlane.sqs", "Common\InitSupportVehicle.sqs"]] ]
-_C130supportW = _type
+_c130supportW = _type
 _type = _type + 1
 
 _price = [10000, 20000] select PricingMode
@@ -1143,7 +1143,7 @@ unitDefs set [_type, ["T72 Res", 3000, _si, 0, "T72Res", "it72", _st, [3, _crewR
 _t72R = _type
 _type = _type + 1
 
-unitDefs set [_type, ["T80 Res", 5000, _si, 0, "T80Res_xj200", "it80", _st, [3, _crewR], _mTank, ["Common\EquipTownVehicles.sqs"]] ]
+unitDefs set [_type, ["T80 Res", 5000, _si, 0, "T80Res_Green_xj200", "it80", _st, [3, _crewR], _mTank, ["Common\EquipTownVehicles.sqs"]] ]
 _t80R = _type
 _type = _type + 1
 
@@ -1558,7 +1558,7 @@ Transport6APCW = [ _m2a2W, _m2a2aa, _m2a2at, _m2a2d ];		Transport6APCE = [ _bmp2
 Transport8APCW = [ _m113W, _m113Cannon ]; 					Transport8APCE = [ _bmpE ]; 			TransportHindE = [ _mi24E, _mi24E2 ];		Cargo8APC = 8
 TransportHeliW = [ _uh60W, _uh60supW, _uh60W30,_uh60WMG2,_uh60WL ]; 	TransportHeliE = [ _mi17E, _mi17supE, _mi17E30,_mi17EL ];				CargoHeli = 12
 TransportSmallHeliW = [ _mh6j ]; 							TransportSmallHeliE = [ _mi2E ];
-TransportPlaneW = [ _c130W ]; 								TransportPlaneE = [ _an12E ];														CargoPlane = 60
+TransportPlaneW = [ _c130W, _c130supportW ]; 				TransportPlaneE = [ _an12E, _an12supportE ];										CargoPlane = 60
 TransportActivatedVehicles = []
 
 _si = si0
@@ -1571,8 +1571,8 @@ groundTransport set [ _si, TransportCarE + TransportTruckE + TransportShipE + Tr
 ; SUPPORT VEHICLES
 ; AI units will get close to them for heal, repair and rearm. planeSupport defines support planes used in plane's support
 typesSupport = [ [_supportAPCW1,_supportAPCWminer1,_supportTruckW,_supportTruckW2,_boatsupW,_shipsupW,_supportAPCW,_supportAPCWminer,_uh60supW], [_supportAPCE1, _supportAPCEminer1,_supportTruckE,_supportTruckE2,_boatsupE,_shipsupE,_supportAPCE, _supportAPCEminer,_mi17supE] ]
-typesSupportPlus = [ [], [] ]; typesSupportPlus set [0, (typesSupport select 0) + [_C130supportW] ]; typesSupportPlus set [1, (typesSupport select 1) + [_an12supportE] ]
-planeSupport = [ [_C130supportW], [_an12supportE] ]
+typesSupportPlus = [ [], [] ]; typesSupportPlus set [0, (typesSupport select 0) + [_c130supportW] ]; typesSupportPlus set [1, (typesSupport select 1) + [_an12supportE] ]
+planeSupport = [ [_c130supportW], [_an12supportE] ]
 typesMHQ = [utMHQ0, utMHQ1]; typesHQ = []
 
 ; Units Type. These classifications are used for new orders and temporary orders as a category parameter.
@@ -1591,7 +1591,7 @@ typesAAAPC = [ _vulcanW2, _vulcanw3, _m2a2aa, _m113Cannon, _vulcanW, _shilkaE2, 
 typesGunshipOrigin = [_ah1W, _ah64W, _v80E, _mi24E, _tigerW]
 typesGunshipAT = [_ah1W2, _ah64W2, _v80E2, _mi24E2, _tigerW2]
 typesKa50 = [ _v80E, _v80E2 ]
-typesPlane =[ _C130supportW, _a10gun, _a10LGB4, _a10bombs, _a10, _a10FFAR, _a10LGB8, _a10AA, _a10BB, _a10Tomahawk, _an12supportE, _su25gun, _su25LGB4, _su25bombs, _su25, _su25Rocket, _su25LGB8, _su25AA, _su25BB, _su25Raduga, _c130W, _an12E ]
+typesPlane =[ _c130supportW, _a10gun, _a10LGB4, _a10bombs, _a10, _a10FFAR, _a10LGB8, _a10AA, _a10BB, _a10Tomahawk, _an12supportE, _su25gun, _su25LGB4, _su25bombs, _su25, _su25Rocket, _su25LGB8, _su25AA, _su25BB, _su25Raduga, _c130W, _an12E ]
 typesInfantryAll = [_soldierW, _MM1W, _soldierMGW, _sniperW, _MortarW, _soldierLAWW, _soldierLAWW2, _soldierATW, _soldierATW2, _soldierAAW, _bomberW, _minerW, _medicW, _crewW, _pilotW, _soldierWL,_soldierWS,_soldierWH,_soldierWA,	_soldierE, _6G30E, _soldierMGE, _sniperE, _KSVKE, _soldierLAWE, _soldierLAWE2, _soldierATE, _soldierATE2, _soldierAAE, _bomberE, _minerE, _medicE, _crewE, _pilotE, _soldierEL,_soldierES,_soldierEH,_soldierEA ]
 typesInfantryAT = [_soldierLAWW, _soldierLAWW2, _soldierATW, _soldierATW2, _soldierAAW, _soldierLAWE, _soldierLAWE2, _soldierATE, _soldierATE2, _soldierAAE]
 
