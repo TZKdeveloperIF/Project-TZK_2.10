@@ -29,16 +29,11 @@ _value = _gi + GroupsNum*giPlayer + GroupsNum*GroupsNum*siPlayer + GroupsNum*Gro
 
 ? mutexSendJoinApply : player groupChat "Join processing, be patient and don't send apply so frequency please."; exit
 mutexSendJoinApply = true
-
-; Remove Killed-EH first. RemoveEH is local thus must work before join.
-{_x removeAllEventHandlers "Killed"} forEach _units
-~0.2
-
 pvJoinReply = -1; pvJoinApply = _value; PublicVariable "pvJoinApply"
 
 @(pvJoinReply != -1)
-_value = pvJoinReply; _refused = false
-? 1 != _value % 2 : _refused = true; goto "JoinRefused"
+_value = pvJoinReply
+? 1 != _value % 2 : goto "JoinRefused"
 { _x exec {Player\OrderNew.sqs} } forEach _JoinUnitIDs
 
 	~3
@@ -57,7 +52,5 @@ player groupChat "Another Join Process is handling on Server. Please try again a
 
 
 #DONE
-_si = siPlayer; _gi = giPlayer
-? _refused : _cost = 0; _type = -1; {	 _type = _x call funcgetunittypefromobject; if (_type >= maxUnitTypes || _type < 0) then {_cost = (unitDefs select (utCustom select _si)) select udCost} else {_cost = (unitDefs select _type) select udCost}; [_x, _si, _cost] exec "Common\EventAdd_InfantryKilled.sqs"	 } forEach _units
-
+? !local LocalServerObject : { if !(_x in (units groupPlayer)) then {_x removeAllEventHandlers "Killed"} } forEach _units
 mutexSendJoinApply = false; exit
