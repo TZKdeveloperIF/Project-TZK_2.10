@@ -46,7 +46,7 @@ _mags = _rearmData select 1
 _cost = _cost/10
 _cost = _cost - (_cost % 1)
 ? _cost < 50 : _cost = 50
-? _unit == _unitRearm : _cost = _cost + 50*("_x in MagzinesMine" count _mags)
+? _unit == _unitRearm : _cost = _cost + 50*("_x == magMine" count _mags)
 _money = (groupMoneyMatrix select siPlayer) select giPlayer
 ? _cost > _money : _msg = format["Not enough money for rearm. ($%1 needed)", _cost]; goto "Exit"
 

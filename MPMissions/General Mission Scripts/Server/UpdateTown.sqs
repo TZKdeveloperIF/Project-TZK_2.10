@@ -26,25 +26,13 @@ _lastSide = _lastSetSide
 ~(10 + random 5)
 { [_x, [getPos _flag, 50, 150] call funcGetRandomPos, - 180 + random 360, siCiv, -1, 0, 1] call fAddVehicle } foreach civTown
 #Update
-	~3
-	; _timeCheck = time + 18 - (time%20)
-	; @ (time > _timeCheck)
-	~ (18 - (time%20))
+	~2
+	_timeCheck = time + 19 - (time%20)
+	@ (time > _timeCheck)
 
-	_units = [0,0,0]; _groups = [[],[]]
-	_index = 0; _count = count _thislist
-
-	;Count qualifying units.
-	#CheckUnit
-		_unit = _thislist select _index
-		_pos = getPos _unit
-
-		? (side _unit) == sides select si0 && (_pos select 2) < 3 : _units set [si0, (_units select si0) + 1]; _group = group _unit; if !(_group in (_groups select si0)) then { (_groups select si0) set [count (_groups select si0), _group] }
-		? (side _unit) == sides select si1 && (_pos select 2) < 3 : _units set [si1, (_units select si1) + 1]; _group = group _unit; if !(_group in (_groups select si1)) then { (_groups select si1) set [count (_groups select si1), _group] }
-		? (side _unit) == sides select siRes && (_pos select 2) < 3 : _units set [siRes, (_units select siRes) + 1]
-
-		_index = _index + 1
-		? _index < _count : goto "CheckUnit"
+	_res = _thislist call funcUpdateTownCheckUnits
+	_units = _res select 0
+	_groups = _res select 1
 
 	_si = -1
 	? ((_units select siRes) > (_units select si0)) && ((_units select siRes) > (_units select si1)): _si = siRes

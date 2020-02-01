@@ -25,6 +25,6 @@ if (alive _obj) then
 			_i = _i + 1;
 		};
 	};
-	if (_found) then {[_obj, _w, _m, _breset, _i] exec "Common\EditRearmdata.sqs"};
+	[_obj, _w, _m, _breset, _i] exec "Common\EditRearmdata.sqs";
 };
 _found
