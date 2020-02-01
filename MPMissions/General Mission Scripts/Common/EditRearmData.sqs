@@ -6,7 +6,7 @@ _m = _this select 2
 _breset = _this select 3
 _i = _this select 4
 
-? _i >= count rearmData : exit
+
 ? _obj != ((rearmData select _i) select 0) : exit
 ? !(alive _obj) : exit
 

@@ -10,3 +10,9 @@ _gi = _this select 2
 
 [_unit, _si] exec "Server\EquipGroupLeaderAI.sqs"
 [_unit, _si, _gi] exec "Server\AI_UpdateLeader.sqs"
+
+; Add Killed-EH for units on server. This killed-EH will be added to all soldiers on server from XR C8 to TZK 2.00 but killed-EH may cause lag on soldiers thus changed it.
+_units = (units group _unit) - [_unit]
+_cost = 0; _type = -1; { _type = _x call funcgetunittypefromobject; if (_type >= maxUnitTypes || _type < 0) then {_cost = (unitDefs select (utCustom select _si)) select udCost} else {_cost = (unitDefs select _type) select udCost}; [_x, _si, _cost] exec "Common\EventAdd_InfantryKilled.sqs" } forEach _units
+
+; EOF

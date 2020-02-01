@@ -2,7 +2,7 @@
 
 dev = false
 debug = true
-_bool_Infantry_Mode = false; _bool_NeutralTown_Mode = false; _bool_SEMod_Mode = false
+_bool_Infantry_Mode = true; _bool_NeutralTown_Mode = false; _bool_SEMod_Mode = false
 
 ; CONSTANTS
 si0 = 0

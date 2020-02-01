@@ -1,5 +1,3 @@
-// args: [_group]
-// return: none
 
 
 private [ "_group", "_res1", "_res0", "_object", "_x"];

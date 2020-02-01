@@ -1,4 +1,4 @@
-; args: [_type, _si, _objects, <repaired>]
+; args: [_object, _type, _si]
 
 _crate = _this select 0
 
