@@ -1,0 +1,4 @@
+In OFP the type of animation has only one type : Rotation. Thus it's necessary to use long radius to realize translation by rotation. However too big size of vertexes in memory-LOD of model will enlarge the size of a vehicle in OFP's radar.
+Since TZK_2.10 all axis of gun-recoil is removed. So do all effects of gun-recoil. Besides, the poklop_driver of Leo2A6 performing translation-like and modified into rotation while long radius axis removed as well.
+
+Search original model in original addons' pbo please.

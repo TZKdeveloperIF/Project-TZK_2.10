@@ -1,0 +1,10 @@
+; args: [vehicle]
+_apc = _this select 0
+
+; Don't add Effect to dedicated server. In Mission Editor LocalServerObject isn't defined thus "local LocalServerObject" return bool and effects will be remain.
+? local LocalServerObject : if (isNull player) then {exit}
+
+; Only add Effects to local vehicles. It seems even though script of Fired-EH activated only on local client still not enough yet.
+? !(local _apc) : exit
+
+_apc addEventHandler [{Fired}, { if (local (_this select 0)) then {_shot = (nearestObject [_this select 0, _this select 4]); [_shot, getPos _shot, getDir _shot, velocity _shot, speed _shot, typeOf _shot, _this] exec {\TZK_Objects\Scripts\SLXTankMGEffect.sqs}; _this exec {\TZK_Objects\Scripts\ffurFired.sqs}; _this exec {\TZK_Objects\Scripts\ffurMissileFlame.sqs}} }]

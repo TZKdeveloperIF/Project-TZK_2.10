@@ -1,0 +1,7 @@
+; args: aircraft
+; WaitUntil the altitude less than 5 on Local Client
+
+_vehicle = _this
+@( ((getPos _vehicle) select 2) < 5 )
+
+pvKilledAircraft = _vehicle; publicVariable {pvKilledAircraft}

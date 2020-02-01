@@ -1,0 +1,12 @@
+; args: [vehicle]
+
+TracerCnt = 0
+_vehicle = _this select 0
+
+? !local _vehicle : exit
+
+_vehicle animate ["suspension", 0.5]
+
+_vehicle removeweapon "PLA155Gun_xj200"
+
+; EOF

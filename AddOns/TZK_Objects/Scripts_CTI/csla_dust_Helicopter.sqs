@@ -1,0 +1,71 @@
+; Script copy from csla_mod and modified to fit CTI game.
+; Plan to execute this script via Init EventHandlers 
+
+_vehicle = _this Select 0
+
+
+;_______________________; HELI DUST SCRIPT ;_______________________;
+; Heli Dust script by Vektorboson
+; see _sensor and _calcH for above sea level calculation!
+; execute just
+; MyHeli exec "effects\heli_dust.sqs"
+
+_null = "scalar bool array string 0xfcffffef"
+
+Private ["_sensor"];
+
+_sensor = "EmptyDetector" CreateVehicle [0,0,0]
+_calcH = {Private["_result"]; _sensor SetPos [GetPos _vehicle Select 0, GetPos _vehicle Select 1, 0]; _result = GetPos _sensor Select 2; _result};
+
+?Format["%1",HDSIN ] == _null: HDSIN = Call {Private["_i","_result"]; _result = []; _i = 0; While "_i < 50" Do {_result = _result + [Sin (7.2*_i)*15]; _i = _i+1;}; _result}
+?Format["%1",HDCOS ] == _null: HDCOS = Call {Private["_i","_result"]; _result = []; _i = 0; While "_i < 50" Do {_result = _result + [Cos (7.2*_i)*15]; _i = _i + 1}; _result}
+
+; these are color prefabs! You may adjust or add some new if you like!
+
+HDCOLORGRASSb  = [[0.35,0.35,0.3,0], [0.2, 0.2, 0.1, 0.5],[0.2, 0.27, 0.15, 0]]
+HDCOLORGRASS  = [[0.35,0.35,0.3,0], [0.45, 0.4, 0.27, 0.2],[0.2, 0.27, 0.15, 0]]
+HDCOLORSAND   = [[0.35,0.35,0.3,0],[0.35,0.35,0.3,0],[0.6, 0.57, 0.5, 0.5],[0.5, 0.47, 0.4, 0]]
+HDCOLORDUST   = [[0.45,0.4,0.4,0],[0.6,0.6,0.6,0],[0.4,0.4,0.4,0.7], [0.65, 0.6, 0.5, 0]]
+HDCOLORDESERT = [[0.4,0.4,0.4,0],[0.6,0.6,0.6,0],[0.7,0.7,0.65,1], [0.65, 0.6, 0.5, 0]]
+HDCOLORWATER = [[0.8,0.8,0.9,0],[0.9,0.9,1,0.7],[0.8,0.8,0.9,0],[0.8,0.8,0.9,0]]
+
+; color for this helictoper
+_icolor = HDCOLORGRASS
+
+_repeat = True
+_lifetime = 1.4
+_shape = "cl_basic"
+_color = _icolor
+
+; here comes all the visual part!
+
+#repeat
+@(GetPos _vehicle Select 2) < 25 && Speed _vehicle < 100 && isEngineOn _vehicle
+
+#loop
+_pos = GetPos _vehicle
+_x = _pos Select 0
+_y = _pos Select 1
+_Z = Random 2
+
+_i = 0
+#l1
+_vel = [HDSIN Select _i, HDCOS Select _i, 0]
+_size1 = Random 3
+_size2 = Random 3 + 1
+_size = [_size1, _size2]
+Drop [_shape, "", "Billboard", _lifetime, _lifetime, [_x, _y, _z], _vel, 0, 0.2, 0.157, 0.01, _size, _color, [0], 0.1, 0.2, "", "", ""]
+_i = _i + 1
+?_i < 50: Goto "l1"
+~0.01
+_color = _icolor
+_shape = "cl_basic"
+?Abs(_this Call _calcH) < 3: _color = HDCOLORWATER; _shape = "cl_water"
+?(GetPos _vehicle Select 2) < 25 && Speed _vehicle < 100 && isEngineOn _vehicle : Goto "loop"
+?_repeat && Alive _vehicle : Goto "repeat"
+
+;_______________________;;_______________________; EXIT ;_______________________;;_______________________;
+Exit
+
+; Copyright ?2003 MikeODonnell - except the part from HELI DUST SCRIPT to EXIT
+; All Rights Reserved
