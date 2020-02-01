@@ -7,7 +7,9 @@ _si = (_value - _gi) / GroupsNum
 
 ? _si != siPlayer || _gi != giPlayer : exit
 
-_groupJoin = call format ["groupJoin%1", _si]; _leaderJoin = call format ["leaderJoin%1", _si]
+; _groupJoin = call format ["groupJoin%1", _si]; _leaderJoin = call format ["leaderJoin%1", _si]
+; groupJoin and groupTemp are not defined in mission.sqm since TZK_3.00 any longer, and client execpt server don't know these groups without public them. In dynamic initialization the leader with global Init message created thus use the leader to indicate the group.
+_leaderJoin = call format ["leaderJoin%1", _si]; _groupJoin = group _leaderJoin
 
 _units = ((units _groupJoin) - [_leaderJoin])
 {groupplayer reveal _x} forEach _units
