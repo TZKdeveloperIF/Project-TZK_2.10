@@ -89,12 +89,13 @@ _town = objNull
 
 
 #Patrol
-	? time < 60*10 : goto "Update"
-	_posOld = _posPatrol
-	_posPatrol = [_posOld] call funcUpdateResPatrolPos
+	? time < ([60*10, 60*0] select dev): goto "Update"
+;	_posOld = _posPatrol
+;	_posPatrol = [_posOld] call funcUpdateResPatrolPos
 
-	{ if (_x == driver vehicle _x) then { _x doMove ([_posPatrol, 10, 20] call funcGetRandomPos) } } foreach (units _group)
-		; player globalchat Format ["UpdatePatrollingResTank.sqs: Patrol: _posPatrol=%1", _posPatrol]
+;	{ if (_x == driver vehicle _x) then { _x doMove ([_posPatrol, 10, 20] call funcGetRandomPos) } } foreach (units _group)
+;		; player globalchat Format ["UpdatePatrollingResTank.sqs: Patrol: _posPatrol=%1", _posPatrol]
+	[_group] call loadFile {Server\UpdateResPatrolTowns.sqf}
 		goto "Update"
 
 #Destroy

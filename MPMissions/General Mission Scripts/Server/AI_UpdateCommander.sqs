@@ -266,6 +266,10 @@ _giPatrol = _gi; _bTakeTown=false; _bDestroy=false
   _res = [getPos _mhq, _si]  call funcGetClosestEnemyObject
   _object = _res select 0
   ? isNull _object : goto "Update"
+	; Sometimes AI may won't go to base directly. Ask AI go to town to fix this(trial)
+	_town0List = [ getPos _object, [_si], [] ] call funcGetClosestTown
+	? _bDestroy: _object = (_town0List select 0) select 0
+	_bDestroy = ! _bDestroy
 	[9, getPos _object, _si, _gi] exec "Common\SendSetWPCO.sqs"
 	~1
 	; _giList = [_si] call funcGetAIGroupsIndex
