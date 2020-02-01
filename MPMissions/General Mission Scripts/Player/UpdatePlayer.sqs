@@ -42,9 +42,14 @@ _timeDead = 0
 	? ((groupPlayer == (groupCommander select siPlayer)) && !isCommander): isCommander = true
 	? ((groupPlayer != (groupCommander select siPlayer)) && isCommander): isCommander = false
 	
-	mhqNearby = [false, true] select ( ( ([_posNow, siPlayer, [[utMHQ0],[utMHQ1]] select siPlayer, []] call funcGetClosestVehicle) select 1 ) < 150 )
+	_mhqPos = getPos _mhq
+	_mhqNearby = [false, true] select ( ([_posNow, _mhqPos] call funcDistH) < 150 )
+	? !_mhqNearby : if ( ([positionAttach, getPos _mhq] call funcDistH) > 100 ) then {mhqNearby = false}
+	? _mhqNearby: mhqNearby = true
+; 	mhqNearby = [false, true] select ( ( ([_posNow, siPlayer, [[utMHQ0],[utMHQ1]] select siPlayer, []] call funcGetClosestVehicle) select 1 ) < 150 )
 	MCVNearby = [false, true] select ( ( ([_posNow, siPlayer, [[utMCVW],[utMCVE]] select siPlayer, []] call funcGetClosestVehicle) select 1 ) < 150 )
 	SupNearby = [false, true] select ( ( ([_posNow, siPlayer, typesSupportPlus select siPlayer, []] call funcGetClosestVehicle) select 1 ) < 50 )
+	? mhqNearby : MCVNearby = false; SupNearby = false
 
 	;? !isNull gunner vehicle player : if (group gunner vehicle player != groupplayer) then {gunner vehicle player setPos [_posNow select 0, _posNow select 1, (_posNow select 2) + 4]}
 	;? -1 != (vehicle player) call funcGetUnitTypeFromObject && !local vehicle player : if (player in [driver vehicle player, gunner vehicle player, commander vehicle player]) then {player action ["Eject", vehicle player]}

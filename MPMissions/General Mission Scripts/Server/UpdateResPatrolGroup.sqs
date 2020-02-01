@@ -95,11 +95,9 @@ _town = objNull
 
 ;	{ if (_x == driver vehicle _x) then { _x doMove ([_posPatrol, 10, 20] call funcGetRandomPos) } } foreach (units _group)
 ;		; player globalchat Format ["UpdatePatrollingResTank.sqs: Patrol: _posPatrol=%1", _posPatrol]
-;	[_group] call loadFile {Server\UpdateResPatrolTowns.sqf}
-{	if (_x == driver vehicle _x) then	{ 	_town0List = [ getPos _x, [siRes], [] ] call funcGetClosestTown;	_town0 = _town0List select 0;	_distance0 = _town0List select 1;	_town0Index = _town0List select 2;		_town1List = [ getPos _x, [siRes], [_town0Index] ] call funcGetClosestTown;	_town1 = _town1List select 0;	_distance1 = _town1List select 1;	_town1Index = _town1List select 2;		_town2List = [ getPos _x, [siRes], [_town0Index, _town1Index] ] call funcGetClosestTown;	_town2 = _town2List select 0;		_town = [_town0, [_town1,_town2] select ((random 1) < 0.667)] select (_distance0 * 4 < _distance1);	_x doMove ([getPos (_town select 0), 150, 150] call funcGetRandomPos);	};} forEach (units _group);
+	[_group] call loadFile {Server\UpdateResPatrolTowns.sqf}
 		goto "Update"
 
 #Destroy
-;	[_group] call funcUpdateResPatrolDestroy
-{	_res1 = [getPos _x, si0] call funcGetClosestEnemyObject;	_res0 = [getPos _x, si1] call funcGetClosestEnemyObject;	_object = [_res1 select 0, _res0 select 0] select ((_res0 select 1) < (_res1 select 1)); 	if ( (_res0 select 1) < (1 + time/3600)*viewDistance || (_res1 select 1) < (1 + time/3600)*viewDistance ) then	{	if (_x == driver vehicle _x) then { _x doMove ([getPos _object, 50, 100] call funcGetRandomPos) };	if ( _x != vehicle _x && _x == gunner vehicle _x && (_x distance _object) < 200) then { [_x, _object] exec "Server\DestroyObject.sqs" };	}	else	{	if (_x == driver vehicle _x) then	{		_res0 = [getPos _x, siRes, []] call funcGetClosestEnemyTown;		if ((_res0 select 0) != -1) then { _flag = (towns select (_res0 select 0)) select tdFlag; _x doMove ([getPos _flag, 4, 4] call funcGetRandomPos) };	} 	}} forEach (units _group);
+	[_group] call loadFile {Server\UpdateResPatrolDestroy.sqf}
 	goto "Update"

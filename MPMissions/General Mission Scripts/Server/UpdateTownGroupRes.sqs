@@ -40,9 +40,7 @@ mutexInitResGroups = false
 ~10
 
 #CheckSpawn
-  _spawn = false
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _spawn = true } } foreach (units _g) } foreach (groupMatrix select si0)
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _spawn = true } } foreach (units _g) } foreach (groupMatrix select si1)
+  _spawn = [_si, _flag, _distSpawn] call funcCheckTGSpawn
   ? _spawn : goto "Spawn"
   ~10
   goto "CheckSpawn"
@@ -72,8 +70,10 @@ _i = 0
 		_type = -1
 		while "_type == -1" do { _type = (armorTown select _si) call funcGetRandomUnitType }
 		_pos = [_posFlag, 150, 150] call funcGetRandomPos
-		_vehicle = [_type, 1, 1, 0, _pos, random 360, _si, -1, _group, 0, 0] exec "Common\AddUnit.sqs"
+		_vehicle = [_type, 1, 1, 0, _pos, random 360, _si, -1, _group, 0, 0] call funcAddServerUnit
 		
+		_timeAbort = time + 5
+		@ (!isNull _vehicle || time > _timeAbort)
 	_i = _i + 1
 	? _i < _tanks : goto "SpawnAddTank"
 #SpawnNoTanks
@@ -91,10 +91,10 @@ _i = 0
 		_type = -1
 		while "_type == -1" do { _type = (armorTown select _si) call funcGetRandomUnitType }
 		_pos = [_posFlag, 150, 150] call funcGetRandomPos
-		_vehicle = [_type, 1, 1, 0, _pos, random 360, _si, -1, _groupPatrol, 0, 0] exec "Common\AddUnit.sqs"
+		_vehicle = [_type, 1, 1, 0, _pos, random 360, _si, -1, _groupPatrol, 0, 0] call funcAddServerUnit
 		
-		_timeAbort = time + 0.25
-		@ (time > _timeAbort)
+		_timeAbort = time + 5
+		@ (!isNull _vehicle || time > _timeAbort)
 	_i = _i + 1
 	mutexAddResPatrol = false
 	? _i < _patrol : goto "SpawnAddPatrol"
