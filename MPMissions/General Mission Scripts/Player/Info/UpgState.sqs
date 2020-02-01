@@ -28,9 +28,9 @@ _si = _value/(100*3)
 
 ? upgWorkers == _upg && _state == 2 : maxWorkers set [_si, 20]
 
-? upgRedTopRange == _upg && _state == 2 && !(local LocalServerObject) : [_si, _upg] exec "Common\ReEquip4xAA.sqs"
+? upgRedTopRange == _upg && _state == 2 && !(local LocalServerObject) : [_si, _upg] call loadFile "Common\ReEquip4xAA.sqf"
 
-? upgRedTopMagazines == _upg && _state == 2 && !(local LocalServerObject) : [_si, _upg] exec "Common\ReEquip4xAA.sqs"
+? upgRedTopMagazines == _upg && _state == 2 && !(local LocalServerObject) : [_si, _upg] call loadFile "Common\ReEquip4xAA.sqf"
 
 ? upgPlaneAfterBurner == _upg && _state == 2 : bAfterBurner = true
 

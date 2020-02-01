@@ -20,6 +20,8 @@ if (_unit == driver vehicle _unit) then
 		if (_wpnPrim != "") then
 		{
 		//	if ((_unit ammo _wpnPrim) == 0) then { _rearm = true };
+		// 	The "ammo" command using muzzleName as parameter. Guns with multi-muzzles will meet problems here. Use the count of magazines instead before we have commands returning muzzleName.
+			if ((count magazines _unit) < 3) then {_rearm = true};
 		};
 		if (_wpnSec != "") then
 		{
