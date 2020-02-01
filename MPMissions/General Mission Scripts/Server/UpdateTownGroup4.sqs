@@ -61,13 +61,14 @@ _unitsInfantry = []; _unitsVehicle = []
 #Patrol
   _group setCombatMode "RED"; _group setBehaviour "COMBAT"; _group setSpeedMode "NORMAL"
   ; CHECK HIBERNATE
-    _hibernate = true
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach (groupMatrix select (siEnemy select _si))
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach (townGroups select (siEnemy select _si))
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach (workerGroups select (siEnemy select _si))
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach ( (groupMatrix select siRes) - groupsPatrol )
-  { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach groupsPatrol
-  ? _hibernate : goto "Hibernate"
+	; Cancel Hibernate for test.
+	; _hibernate = true
+	; { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach (groupMatrix select (siEnemy select _si))
+	; { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach (townGroups select (siEnemy select _si))
+	; { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach (workerGroups select (siEnemy select _si))
+	; { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach ( (groupMatrix select siRes) - groupsPatrol )
+	; { _g = _x; { if ((_x distance _flag) < _distSpawn) then { _hibernate = false } } foreach (units _g) } foreach groupsPatrol
+	; ? _hibernate : goto "Hibernate"
   
 	_c = count (units _group)
 	? _c < _cLast : [_ti, _si] exec "Server\Info\TownGroupLoss.sqs"
