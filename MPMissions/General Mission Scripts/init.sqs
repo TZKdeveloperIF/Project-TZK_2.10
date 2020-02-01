@@ -501,7 +501,7 @@ _type = _type + 1
 ;_type = _type + 1
 
 ;orderOccupy = _type
-;OccupyTypeDefs = ["All Defense", "Mortar", "MG Fort", "MG Tower", "MG", "Gun Fort"]
+;OccupyTypeDefs = ["All Defense", "Mortar", "MG Ground", "MG Tower", "M46", "M46 Art", "Gun Fort"]
 ;_param0 = [ "Waypoint", "count (wpCO select siPlayer)", "_posRelTown = ((wpCO select siPlayer) select _this) call funcCalcTownDirDistFromPos; format[""co%1 %2"", _this, [_posRelTown, """"] select ((((wpCO select siPlayer) select _this) select 0) == -1)]" ]
 ;_param1 = [ "Structure type", "count OccupyTypeDefs", "format [""%1"", OccupyTypeDefs select _this ]" ]
 ;_param2 = [ "Occupy Radius", "10", "format [""%1m"", 50*(_this+1)]" ]
@@ -589,7 +589,7 @@ orderTempDefs set [_type, ["Reclaim", [_param0, _param1, _param2, _param3, _para
 _type = _type + 1
 
 orderTempOccupy = _type
-OccupyTypeDefs = ["All Defense", "Mortar", "MG Fort", "MG Tower", "MG", "Gun Fort"]
+OccupyTypeDefs = ["All Defense", "Mortar", "MG Ground", "MG Tower", "M46", "M46 Art", "Gun Fort"]
 _param0 = [ "Waypoint", "count (wpCO select siPlayer)", "_posRelTown = ((wpCO select siPlayer) select _this) call funcCalcTownDirDistFromPos; format[""co%1 %2"", _this, [_posRelTown, """"] select ((((wpCO select siPlayer) select _this) select 0) == -1)]" ]
 _param1 = [ "Structure type", "count OccupyTypeDefs", "format [""%1"", OccupyTypeDefs select _this ]" ]
 _param2 = [ "Occupy Radius", "20", "format [""%1m"", 50*(_this+1)]" ]
@@ -725,8 +725,8 @@ _type = _type + 1
 
 ; orderTemp entry format: [orderTempID, orderTempType, [param0, param1, ...]]
 orderTempMatrix = [ [], [] ]
-_si = si0; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClear, []] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
-_si = si1; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClear, []] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
+_si = si0; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClearUnit, [0]] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
+_si = si1; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClearUnit, [0]] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
 
 
 ; WAYPOINTS

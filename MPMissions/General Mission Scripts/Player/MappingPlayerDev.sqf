@@ -205,3 +205,42 @@ if (count _radars > 0 || dev) then
 		_i = _i + 1;
 	};
 };
+	
+// Structures OWN
+_i = 0;
+while "_i < maxStructureMarkers" do
+{
+	_v = (StructureMarkerMapping select siPlayer) select _i;
+	_m = format["Structure_%1_%2", siPlayer, _i];
+	if (isNull _v) then
+	{
+		_m setMarkerPos hiddenMarkerPos;
+	}
+	else
+	{
+		_m setMarkerPos getPos _v;
+	};
+	_i=_i+1;
+};
+
+// Structures Enemy
+
+if (dev) then
+{
+	_siEnemy = siEnemy select siPlayer;
+	_i = 0;
+	while "_i < maxStructureMarkers" do
+	{
+		_v = (StructureMarkerMapping select _siEnemy) select _i;
+		_m = format["Structure_%1_%2", _siEnemy, _i];
+		if (isNull _v) then {_m setMarkerPos hiddenMarkerPos;} else
+		{
+			_inrange = false;
+			if ( !_inrange && !dev ) then {_m setMarkerPos hiddenMarkerPos;} else
+			{
+				_m setMarkerPos getPos _v;
+			};
+		};
+		_i = _i + 1;
+	};
+};

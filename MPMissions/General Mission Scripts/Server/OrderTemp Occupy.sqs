@@ -36,15 +36,16 @@ call busySet
 
 _typesOccupy = []; _crewnum = 0; 
 
-; structsDefence = [_mortar, _mgFort, _mgTowerWood, _mgTowerConcrete, _mg, _gunf], defined by InitStructureTypes.sqs
-; OccupyTypeDefs = ["All Defense", "Mortar", "MG Fort", "MG Tower", "MG", "Gun Fort"], defined in Init.sqs
+; Using structsOccupiable arrays defined in InitStructureTypes.sqs
+; OccupyTypeDefs = ["All Defense", "Mortar", "MG Ground", "MG Tower", "M46", "M46 Art", "Gun Fort"], defined in Init.sqs
 
-? (OccupyTypeDefs select _indexOccupy) == "All Defense" :	_typesOccupy = structsDefence; 											_crewnum = 1;
-? (OccupyTypeDefs select _indexOccupy) == "Mortar" :		_typesOccupy = [structsDefence select 0, structsDefence select 6]; 								_crewnum = 1;
-? (OccupyTypeDefs select _indexOccupy) == "MG Fort" :		_typesOccupy = [structsDefence select 1]; 								_crewnum = 1;
-? (OccupyTypeDefs select _indexOccupy) == "MG Tower" :		_typesOccupy = [structsDefence select 2, structsDefence select 3]; 		_crewnum = 1;
-? (OccupyTypeDefs select _indexOccupy) == "MG" :			_typesOccupy = [structsDefence select 4]; 								_crewnum = 1;
-? (OccupyTypeDefs select _indexOccupy) == "Gun Fort" :		_typesOccupy = [structsDefence select 5]; 								_crewnum = 1;
+? (OccupyTypeDefs select _indexOccupy) == "All Defense" :	_typesOccupy = structsOccupiableMortar + structsOccupiableMGGround + structsOccupiableMGTower + structsOccupiableGunfort + structsOccupiableM46 + structsOccupiableM46Art
+? (OccupyTypeDefs select _indexOccupy) == "Mortar" :		_typesOccupy = structsOccupiableMortar
+? (OccupyTypeDefs select _indexOccupy) == "MG Ground" :		_typesOccupy = structsOccupiableMGGround
+? (OccupyTypeDefs select _indexOccupy) == "MG Tower" :		_typesOccupy = structsOccupiableMGTower
+? (OccupyTypeDefs select _indexOccupy) == "M46" :			_typesOccupy = structsOccupiableM46
+? (OccupyTypeDefs select _indexOccupy) == "M46 Art" :		_typesOccupy = structsOccupiableM46Art
+? (OccupyTypeDefs select _indexOccupy) == "Gun Fort" :		_typesOccupy = structsOccupiableGunfort
 
 _groups = groupMatrix select _si
 #Update

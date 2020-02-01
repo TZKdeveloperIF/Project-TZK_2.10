@@ -62,3 +62,7 @@ _index=0; { _m = format["Vehicle_%1_%2", siPlayer, _index]; _m setMarkerPos hidd
 // VEHICLES ENEMY
 _index=0; { _m = format["Vehicle_%1_%2", _siEnemy, _index]; _m setMarkerPos hiddenMarkerPos; _index=_index+1 } foreach (vehicleMarkerMapping select _siEnemy);
 _index=0; { _m = format["Vehicle_%1_%2", siRes, _index]; _m setMarkerPos hiddenMarkerPos; _index=_index+1 } foreach (vehicleMarkerMapping select siRes);
+
+// Structures
+_index=0; { _m = format["Structure_%1_%2", siPlayer, _index]; _m setMarkerPos hiddenMarkerPos; _index=_index+1 } foreach (StructureMarkerMapping select siPlayer);
+_index=0; { _m = format["Structure_%1_%2", _siEnemy, _index]; _m setMarkerPos hiddenMarkerPos; _index=_index+1 } foreach (StructureMarkerMapping select _siEnemy);

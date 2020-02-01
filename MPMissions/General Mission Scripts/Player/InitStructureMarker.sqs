@@ -1,0 +1,7 @@
+; args: [_object, _type, _si]
+
+_type = _this select 1
+_si = _this select 2
+_object = _this select 0
+
+[_object, _type, _si] call funcInitStructureMarker
