@@ -188,7 +188,7 @@ _giPatrol = _gi; _bTakeTown=false; _bDestroy=false
 	_timeCheckOrders = time + 1*60
   [0, getPos _mhq, _si, _gi] exec "Common\SendSetWPCO.sqs"
 	~0.4
-	[_si, _gi + GroupsNum, orderPatrolArea, [0,2]] exec "Common\SendAIGroupOrder.sqs"
+	[_si, _gi + GroupsNum, orderPatrolArea, [0,2]] exec "Common\SendAIGroupOrder.sqs"; [_si, _gi + GroupsNum, aisKeepMax, 13] exec "Common\SendAIGroupSetting.sqs"
 	goto "Update"
 
 #PrepareToTakeFirstTown
@@ -197,7 +197,7 @@ _giPatrol = _gi; _bTakeTown=false; _bDestroy=false
 	~(random 10)
 	[0, getPos _mhq, _si, _gi] exec "Common\SendSetWPCO.sqs"
 	~0.4
-	[_si, _gi + GroupsNum, orderPatrolArea, [0,2]] exec "Common\SendAIGroupOrder.sqs"
+	[_si, _gi + GroupsNum, orderPatrolArea, [0,2]] exec "Common\SendAIGroupOrder.sqs"; [_si, _gi + GroupsNum, aisKeepMax, 13] exec "Common\SendAIGroupSetting.sqs"
 	goto "Update"
 
 #TakeFirstTown
