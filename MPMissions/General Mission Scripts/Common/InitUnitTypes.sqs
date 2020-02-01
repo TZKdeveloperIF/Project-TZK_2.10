@@ -152,7 +152,7 @@ _type = _type + 1
 _st = stLight
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["M16", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
+unitDefs set [_type, ["Soldier (M16)", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
 _soldierWL = _type
 _type = _type + 1
 
@@ -274,7 +274,7 @@ _price = [3500, 7000] select PricingMode
 _st = stShip
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["M16", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
+unitDefs set [_type, ["Soldier (M16)", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
 _soldierWS = _type
 _type = _type + 1
 
@@ -334,7 +334,7 @@ _price = [3500, 7000] select PricingMode
 _st = stHeavy
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["M16", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
+unitDefs set [_type, ["Soldier (M16)", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
 _soldierWH = _type
 _type = _type + 1
 
@@ -448,7 +448,7 @@ _type = _type + 1
 _st = stAir
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["M16", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
+unitDefs set [_type, ["Soldier (M16)", _price, _si, 10, "SoldierWB", "ivojak", _st, [], "", ["Common\EquipM16.sqs"]] ]
 _soldierWA = _type
 _type = _type + 1
 
@@ -678,7 +678,7 @@ _type = _type + 1
 _st = stLight
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["AK74", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
+unitDefs set [_type, ["Soldier (AK74)", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
 _soldierEL = _type
 _type = _type + 1
 
@@ -799,7 +799,7 @@ _price = [3500, 7000] select PricingMode
 _st = stShip
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["AK74", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
+unitDefs set [_type, ["Soldier (AK74)", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
 _soldierES = _type
 _type = _type + 1
 
@@ -859,7 +859,7 @@ _price = [3500, 7000] select PricingMode
 _st = stHeavy
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["AK74", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
+unitDefs set [_type, ["Soldier (AK74)", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
 _soldierEH = _type
 _type = _type + 1
 
@@ -973,7 +973,7 @@ _type = _type + 1
 _st = stAir
 
 _price = [50, 100] select PricingMode
-unitDefs set [_type, ["AK74", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
+unitDefs set [_type, ["Soldier (AK74)", _price, _si, 10, "SoldierEB", "ivojak", _st, [], "", []] ]
 _soldierEA = _type
 _type = _type + 1
 

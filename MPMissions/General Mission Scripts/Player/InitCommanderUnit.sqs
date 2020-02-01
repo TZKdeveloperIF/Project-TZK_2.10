@@ -1,6 +1,6 @@
 ; args : none
 
-? !(giPlayer == (giCO select siPlayer)) : exit
+? giPlayer != 0 : exit
 
 ~2
 player groupChat "Commander's group units arriving..."
