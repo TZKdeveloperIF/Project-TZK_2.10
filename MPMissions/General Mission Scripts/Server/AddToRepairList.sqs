@@ -16,5 +16,7 @@ _count = count _list
 while "_index < _count && !_found" do { if (isNull ((_list select _index)select(0))) then { _found = true } else { _index = _index + 1} }
 ; ? _index < _count : if !(isNull ((_list select _index)select(0))) then { _index = _count }
 
-_list set [_index, [_object, 1, _type] ]
+_damageRate = 1
+? _type in structsDefence : _damageRate = 0.24
+_list set [_index, [_object, _damageRate, _type] ]
 mutexRepStructMatrix = false

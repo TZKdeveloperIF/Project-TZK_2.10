@@ -40,6 +40,7 @@ _type = _res select 1
 	deleteVehicle _object
 	[_si, _type, _objectReplacing] exec "Common\AddToStructMatrix.sqs"
 	@(isNull _object)
+	{_x setDamage 0} forEach _objects
 	mutexRepairStructure = false
 	goto "Quit"
 

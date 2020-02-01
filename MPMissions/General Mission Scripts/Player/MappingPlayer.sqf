@@ -233,14 +233,7 @@ while "_i < maxStructureMarkers" do
 {
 	_v = (StructureMarkerMapping select siPlayer) select _i;
 	_m = format["Structure_%1_%2", siPlayer, _i];
-	if (isNull _v) then
-	{
-		_m setMarkerPos hiddenMarkerPos;
-	}
-	else
-	{
-		_m setMarkerPos getPos _v;
-	};
+	if (isNull _v) then { _m setMarkerPos hiddenMarkerPos };
 	_i=_i+1;
 };
 

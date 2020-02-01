@@ -25,7 +25,6 @@ _vehicle addEventHandler ["killed", { _this exec "Common\Event_VehicleDestroyed.
 ; PLAYER ONLY
 
 [_vehicle, _type, _si] call funcInitVehicleMarker
-? "Air" countType [_vehicle] > 0 : _vehicle removeAllEventHandlers "Fired"
 
 ? !(_type in vUnlimitedRange) && !(_type in vDoubledRange) : _vehicle addEventHandler ["Fired",{ [_this select 0, nearestObject[_this select 0, _this select 4], _this ] exec "Player\LimitWeaponRange.sqs" }]
 ? (_type in vDoubledRange) : _vehicle addEventHandler ["Fired",{ [_this select 0, nearestObject[_this select 0, _this select 4], _this ] exec "Player\LimitWeaponRangeDouble.sqs" }]

@@ -82,7 +82,7 @@ WeatherChosen = (param2 % 100) % 8
 ZeroTime = ( (param2 % 100) - WeatherChosen ) / 8
 viewDistance = param2 - (param2 % 100)
 SkipTime ([0,9,15,21,0] select ZeroTime)
-? ZeroTime == 4 : [] exec "Server\Timeboost.sqs"
+? ZeroTime == 4 : [60] exec "Common\TimeSkip.sqs"
 PricingMode = 0
 setViewDistance viewDistance
 ;player globalchat format ["fixedStartPos=%1, timeLimit=%2, maxGroupSize=%3, viewDistance=%4" ,fixedStartPos, timeLimit, maxGroupSize, viewDistance]

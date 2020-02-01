@@ -79,7 +79,8 @@ if (((groupMatrix select _si) select _giTo) in (groupAiMatrix select _si)) then 
 
 #DONE	
 ; Wait till Join Process completed
-@( count (units _groupJoin) == 1 || pvJoinTried != -1 )
+_timeAbort = time + 15
+@( count (units _groupJoin) == 1 || pvJoinTried != -1 || time > _timeAbort )
 
 ; Join might fail on client sometimes.
 ? count (units _groupJoin) == 1 : goto "QUIT"
