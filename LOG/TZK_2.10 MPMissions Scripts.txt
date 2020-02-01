@@ -1,0 +1,9 @@
+mission.sqm is unique. They're modified in early versions. Their updating not included here, only final product provided.
+
+Init.sqs for "Self-Training" mission and "Dev-Test" missoin is unique only in its "dev" variable. The dev is "true" in these 2 missions.
+
+description.ext is unique for those "paramless" missions. For some players too many param1 and param2 defined in this file may cause they get stuck at "Wait For Server". This setting is abandoned in subsequent versions.
+
+InitUnitTypes.sqs and InitStructureTypes.sqs are unique for "Inf" missions, meaning "Infantry Mode" allowing only soldiers and transport vehicles built in missions. This setting isn't good enough relying on Init-series scripts, their initialization should be placed in  the unique mission.sqm, and special settings should be applied in an additional way but not by just simply create another edited but mostly copy-and-paste scripts.
+
+The changes of general scripts is recorded. Special scripts mentioned above are not tracked but just listed final product as mission.sqm.

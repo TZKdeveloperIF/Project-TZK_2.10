@@ -22,6 +22,8 @@ _si = _value
 
 ; ? ((groupMoneyMatrix select _si) select _giFrom) < _amount: goto "Start"
 
+? _giFrom == _giTo && _giFrom == giCO select _si && _amount < 0: _gi = 0; _count = count (groupMatrix select _si); while "_gi < _count" do {if (_gi != _giFrom) then {[_si, _giFrom, _gi, -_amount] exec "Server\MoneyTransfer.sqs"}; _gi = _gi + 1}; goto "Start"
+
 ? _giFrom == _giTo && _giFrom == giCO select _si: _giList = [_si] call funcGetAIGroupsIndex; {[_si, _giFrom, _x, _amount] exec "Server\MoneyTransfer.sqs"} forEach _giList; goto "Start"
 
 [_si, _giFrom, _giTo, _amount] exec "Server\MoneyTransfer.sqs"

@@ -23,6 +23,7 @@ _idcGiveMoneyToAI = IDC + 19
 _idcTakeMoney = IDC + 20
 _idcCommandTemporary = IDC + 21
 _idcSpySat = IDC + 22
+_idcGiveMoneyToALL = IDC + 23
 
 ; _idc defined above must consist with definition in description.ext.
 
@@ -40,6 +41,7 @@ btnAsk = false
 btnTake = false
 btnGive = false
 btnGiveAIs = false
+btnGiveAll = false
 btnUpgrade = false
 btnBuyUnits = false
 btnShowStats = false
@@ -78,7 +80,7 @@ _money = _groupsMoney select giPlayer
 _groupCommander = (groupCommander select siPlayer)
 ; DISABLE stuff for NON-commanders
 _isCommander = groupPlayer == _groupCommander
-ctrlEnable [_idcAIRespawn, _isCommander]; ctrlEnable [_idcIncomeRatio, _isCommander]; ctrlEnable [_idcIncomeRatioPlayer, _isCommander]; ctrlEnable [_idcUpgradeList, _isCommander]; ctrlShow [_idcUpgradeStart, _isCommander]; ctrlEnable [_idcTransferCommandGroup, _isCommander]; ctrlShow [_idcTransferCommand, _isCommander]; ctrlEnable [_idcWorkerBehaviour, _isCommander]; ctrlShow [_idcDestruction, _isCommander]; ctrlShow [_idcGiveMoneyToAI, _isCommander]; ctrlShow [_idcTakeMoney, _isCommander]
+ctrlEnable [_idcAIRespawn, _isCommander]; ctrlEnable [_idcIncomeRatio, _isCommander]; ctrlEnable [_idcIncomeRatioPlayer, _isCommander]; ctrlShow [_idcUpgradeStart, _isCommander]; ctrlEnable [_idcTransferCommandGroup, _isCommander]; ctrlShow [_idcTransferCommand, _isCommander]; ctrlEnable [_idcWorkerBehaviour, _isCommander]; ctrlShow [_idcDestruction, _isCommander]; ctrlShow [_idcGiveMoneyToAI, _isCommander]; ctrlShow [_idcGiveMoneyToALL, _isCommander]; ctrlShow [_idcTakeMoney, _isCommander]
 ? !_isCommander : _gis = ([siPlayer] call funcGetAIGroupsIndex); _Superior = _gis call funcCheckWhetherSuperior; if (_Superior && lbCurSel _idcTransferGroup != -1) then {ctrlShow [_idcTakeMoney, ( ( (["Commander"] + callsigns) select ( ( (aiSetting select siPlayer) select lbCurSel _idcTransferGroup ) select aisSuperior ) ) == _groupsName select giPlayer) || ( (_groups select (lbCurSel _idcTransferGroup)) == _groupCommander )]}
 
 ctrlShow [_idcNumberedAI, bNumberedAI]
@@ -99,6 +101,7 @@ report = lbCurSel _idcReports
 ? btnTake : btnTake=false; goto "TakeMoney"
 ? btnGive : btnGive=false; goto "GiveMoney"
 ? btnGiveAIs : btnGiveAIs=false; goto "GiveMoneyToAI"
+? btnGiveAll : btnGiveAll=false; goto "GiveMoneyToAll"
 ? btnBuyUnits : btnBuyUnits=false; goto "BuyUnits"
 ? btnShowStats : btnShowStats=false; goto "ShowStats"
 ? btnUnitCam : btnUnitCam=false; goto "UnitCam"
@@ -160,7 +163,15 @@ goto "Update"
 	? _amount == 50000 : _amount = _money / count(_groupsAI) - ( ( _money / count(_groupsAI) ) % 1 )
 	[siPlayer, giPlayer, giPlayer, _amount] exec "Player\SendGiveMoney.sqs"
 	goto "Update"
-	
+
+#GiveMoneyToAll
+	_amount = lbValue [_idcTransferAmount, lbCurSel _idcTransferAmount]
+	? _amount == 114514 : _amount = ( _money % 100 )
+	? _amount == 50000 : _amount = _money / count(_groups - [_groupCommander]) - ( ( _money / count(_groups - [_groupCommander]) ) % 1 )
+	_amount = - _amount
+	[siPlayer, giPlayer, giPlayer, _amount] exec "Player\SendGiveMoney.sqs"
+	goto "Update"
+
 
 #TakeMoney
 	_index = lbCurSel _idcTransferGroup

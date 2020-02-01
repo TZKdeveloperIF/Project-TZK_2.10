@@ -121,7 +121,7 @@ upgTrackArtBullet = _type; 		upgDefs set [_type, ["Track Art Bullet", [10000, 10
 
 upgWorkers = _type; 			upgDefs set [_type, ["Upgrade Workers", [5000, 100] select dev, [2, 0] select dev]]; _type=_type+1
 
-upgGunshipRocket = _type; 		upgDefs set [_type, ["Helicopter Rockets", [20000, 100] select dev, [3, 0] select dev]]; _type=_type+1
+upgGunshipRocket = _type; 		upgDefs set [_type, ["Helicopter Rockets", [25000, 100] select dev, [3, 0] select dev]]; _type=_type+1
 
 upgPlaneAfterBurner = _type; 	upgDefs set [_type, ["Plane After Burner", [20000, 100] select dev, [3, 0] select dev]]; _type=_type+1
 

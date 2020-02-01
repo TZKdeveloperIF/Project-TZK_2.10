@@ -19,23 +19,23 @@ isHandgunSlots = 4
 isOpticsSlots = 2
 
 ; addon specific equipment used in scripts
-magMine = "Mine"
+magMine = "Mine"; magPistolMine = "Mine_Pistol_xj200"; MagzinesMine = [magMine, magPistolMine]
 magHandGrenade = "HandGrenade"
 ammoMine = "Mine"
-magSatchel = "PipeBomb"
+magSatchel = "PipeBomb"; magPistolSatchel = "PipeBomb_Pistol_xj200"; MagzinesSatchel = [magSatchel, magPistolSatchel]
 magTimeBomb = "TimeBomb"
 weaponPut = "Put"
 weaponsCustom = []
 
-cargoCarSide0 = [[magMine,2], ["Pipebomb",4], ["LAWLauncher",3], ["CarlGustavLauncher",2], ["AALauncher",1]]
-cargoCarSide1 = [[magMine,2], ["Pipebomb",4], ["RPGLauncher",3], ["AT4Launcher",2], ["9K32Launcher",1]]
+cargoCarSide0 = [[magMine,2], [magSatchel,4], ["LAWLauncher",3], ["CarlGustavLauncher",2], ["AALauncher",1]]
+cargoCarSide1 = [[magMine,2], [magSatchel,4], ["RPGLauncher",3], ["AT4Launcher",2], ["9K32Launcher",1]]
 
-cargoCar2Side0 = [[magMine,4], ["Pipebomb",4], ["LAWLauncher",6], ["CarlGustavLauncher",4], ["AALauncher",3]]
-cargoCar2Side1 = [[magMine,4], ["Pipebomb",4], ["RPGLauncher",6], ["AT4Launcher",4], ["9K32Launcher",3]]
+cargoCar2Side0 = [[magMine,4], [magSatchel,4], ["LAWLauncher",6], ["CarlGustavLauncher",4], ["AALauncher",3]]
+cargoCar2Side1 = [[magMine,4], [magSatchel,4], ["RPGLauncher",6], ["AT4Launcher",4], ["9K32Launcher",3]]
 
 
-cargoTruckSide0 = [[magMine,4], ["Pipebomb",8], ["LAWLauncher",6], ["CarlGustavLauncher",5], ["AALauncher",3]]
-cargoTruckSide1 = [[magMine,4], ["Pipebomb",8], ["RPGLauncher",6], ["AT4Launcher",5], ["9K32Launcher",3]]
+cargoTruckSide0 = [[magMine,4], [magSatchel,8], ["LAWLauncher",6], ["CarlGustavLauncher",5], ["AALauncher",3]]
+cargoTruckSide1 = [[magMine,4], [magSatchel,8], ["RPGLauncher",6], ["AT4Launcher",5], ["9K32Launcher",3]]
 
 
 weaponsRespawnPlayer = [ ["G36a_xj200", "LAWLauncher", "Binocular"], ["KEGAK107_xj200", "RPGLauncher", "Binocular"] ]
@@ -50,10 +50,10 @@ magsRespawnPlayer2 = [ ["EUDEF_MP5SD6_MAG_xj200", "EUDEF_MP5SD6_MAG_xj200", "EUD
 
 
 weaponsRespawnPlayer3 = [ ["JahSG551_xj200", "AT_AALauncherW_xj200", "Binocular", "NVGoggles"], ["mVSS_xj200", "AT_AALauncherE_xj200", "Binocular", "NVGoggles"] ]
-magsRespawnPlayer3 = [ ["JahSG551mag_xj200", "JahSG551mag_xj200", "CarlGustavIn4_xj200", "AAIn4_xj200", "Medkit_xj200", "Medkit_xj200"], ["mVSSmag_xj200", "mVSSmag_xj200", "AT4In4_xj200", "9k32In4_xj200", "Medkit_xj200", "Medkit_xj200"] ]
+magsRespawnPlayer3 = [ ["JahSG551mag_xj200", "JahSG551mag_xj200", "CarlGustavIn4_xj200", "AAIn4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"], ["mVSSmag_xj200", "mVSSmag_xj200", "AT4In4_xj200", "9k32In4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"] ]
 
 weaponsRespawnPlayer4 = [ ["JAM_M21", "AT_AALauncherW_xj200", "Binocular", "NVGoggles"], ["RFSVUa_xj200", "AT_AALauncherE_xj200", "Binocular", "NVGoggles"] ]
-magsRespawnPlayer4 = [ ["JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "CarlGustavIn4_xj200", "AAIn4_xj200", "Medkit_xj200", "Medkit_xj200"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4In4_xj200", "9k32In4_xj200", "Medkit_xj200", "Medkit_xj200"] ]
+magsRespawnPlayer4 = [ ["JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "CarlGustavIn4_xj200", "AAIn4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4In4_xj200", "9k32In4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"] ]
 
 weaponsRespawnPlayer5 = [ ["JAM_M21", "CarlGustavLauncher", "Binocular"], ["JAM_SVD", "AT4Launcher", "Binocular"] ]
 magsRespawnPlayer5 = [ ["JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "CarlGustavLauncher"], ["JAM_E762_10mag", "JAM_E762_10mag", "JAM_E762_10mag", "JAM_E762_10mag", "AT4Launcher"] ]
@@ -74,7 +74,7 @@ magsRespawnPlayer9 = [ ["JahSG551mag", "JahSG551mag", "LAWLauncher", "LAWLaunche
 
 
 weaponsRespawnAI = [ ["G36a_xj200", "LAWLauncher", "Put"], ["KEGAK107_xj200", "RPGLauncher","Put"] ]
-magsRespawnAI = [ ["G36aMag_xj200", "G36aMag_xj200", "LAWLauncher", "LAWLauncher", "PipeBomb", "PipeBomb"], ["KEGAK107Mag_xj200", "KEGAK107Mag_xj200", "RPGLauncher", "RPGLauncher", "PipeBomb", "PipeBomb"] ]
+magsRespawnAI = [ ["G36aMag_xj200", "G36aMag_xj200", "LAWLauncher", "LAWLauncher", magSatchel, magSatchel], ["KEGAK107Mag_xj200", "KEGAK107Mag_xj200", "RPGLauncher", "RPGLauncher", magSatchel, magSatchel] ]
 
 weaponsRespawnAI1 = [ ["G36a_xj200", "AALauncher"], ["KEGAK107_xj200", "9K32Launcher"] ]
 magsRespawnAI1 = [ ["G36aMag_xj200", "G36aMag_xj200","G36aMag_xj200","G36aMag_xj200", "AALauncher"], ["KEGAK107Mag_xj200", "KEGAK107Mag_xj200","KEGAK107Mag_xj200","KEGAK107Mag_xj200", "9K32Launcher"] ]
@@ -91,19 +91,19 @@ magsRespawnAI4 = [ ["G36aMag_xj200", "G36aMag_xj200", "G36aMag_xj200", "LAWLaunc
 
 
 weaponsRespawnAI5 = [ ["JahSG551_xj200", "AT_AALauncherW_xj200", "NVGoggles"], ["mVSS_xj200", "AT_AALauncherE_xj200", "NVGoggles"] ]
-magsRespawnAI5 = [ ["JahSG551mag_xj200", "JahSG551mag_xj200", "CarlGustavIn4_xj200", "AAIn4_xj200", "Medkit_xj200", "Medkit_xj200"], ["mVSSmag_xj200", "mVSSmag_xj200", "AT4In4_xj200", "9k32In4_xj200", "Medkit_xj200", "Medkit_xj200"] ]
+magsRespawnAI5 = [ ["JahSG551mag_xj200", "JahSG551mag_xj200", "CarlGustavIn4_xj200", "AAIn4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, magPistolMine], ["mVSSmag_xj200", "mVSSmag_xj200", "AT4In4_xj200", "9k32In4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, magPistolMine] ]
 
 weaponsRespawnAI6 = [ ["M21", "AT_AALauncherW_xj200", "NVGoggles"], ["RFSVUa_xj200", "AT_AALauncherE_xj200", "NVGoggles"] ]
-magsRespawnAI6 = [ ["M21", "M21", "CarlGustavIn4_xj200", "AAIn4_xj200", "Medkit_xj200", "Medkit_xj200"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4In4_xj200", "9k32In4_xj200", "Medkit_xj200", "Medkit_xj200"] ]
+magsRespawnAI6 = [ ["M21", "M21", "CarlGustavIn4_xj200", "AAIn4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, magPistolMine], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4In4_xj200", "9k32In4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, magPistolMine] ]
 
 weaponsRespawnAI7 = [ ["M21", "CarlGustavLauncher", "Put", "NVGoggles"], ["RFSVUa_xj200", "AT4Launcher","Put", "NVGoggles"] ]
-magsRespawnAI7 = [ ["M21", "M21", "CarlGustavLauncher", "PipeBomb"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4Launcher", "PipeBomb"] ]
+magsRespawnAI7 = [ ["M21", "M21", "CarlGustavLauncher", magSatchel], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4Launcher", magSatchel] ]
 
 weaponsRespawnAI8 = [ ["M21", "AALauncher", "Put", "NVGoggles"], ["RFSVUa_xj200", "9K32Launcher","Put", "NVGoggles"] ]
-magsRespawnAI8 = [ ["M21", "M21", "AALauncher", "PipeBomb"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "9K32Launcher", "PipeBomb"] ]
+magsRespawnAI8 = [ ["M21", "M21", "AALauncher", magSatchel], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "9K32Launcher", magSatchel] ]
 
 weaponsRespawnAI9 = [ ["G36a_xj200", "CarlGustavLauncher", "Put", "NVGoggles"], ["KEGAK107_xj200", "AT4Launcher","Put", "NVGoggles"] ]
-magsRespawnAI9 = [ ["G36aMag_xj200", "G36aMag_xj200", "CarlGustavLauncher", "PipeBomb"], ["KEGAK107Mag_xj200", "KEGAK107Mag_xj200", "AT4Launcher", "PipeBomb"] ]
+magsRespawnAI9 = [ ["G36aMag_xj200", "G36aMag_xj200", "CarlGustavLauncher", magSatchel], ["KEGAK107Mag_xj200", "KEGAK107Mag_xj200", "AT4Launcher", magSatchel] ]
 
 
 
@@ -359,7 +359,7 @@ equipDefs set [_type, ["Mine", siBoth, isGeneral, 2, magMine, "\dtaExt\equip\m\m
 etMine = _type
 _type = _type + 1
 
-equipDefs set [_type, ["Satchel", siBoth, isGeneral, 2, "Pipebomb", "\dtaExt\equip\m\m_pipebomb",50 ]]
+equipDefs set [_type, ["Satchel", siBoth, isGeneral, 2, magSatchel, "\dtaExt\equip\m\m_pipebomb",50 ]]
 _type = _type + 1
 
 equipDefs set [_type, ["Smoke Shell", siBoth, isGeneral, 1, "SmokeShell", "\dtaExt\equip\m\m_smokeshell",0 ]]
@@ -372,6 +372,10 @@ equipDefs set [_type, ["Smoke Shell Red", siBoth, isGeneral, 1, "SmokeShellRed",
 _type = _type + 1
 
 equipDefs set [_type, ["Medkit", siBoth, isHandgun, 1, "Medkit_xj200", "\data\sanita_02",50 ]]
+_type = _type + 1
+equipDefs set [_type, ["Portable Satchel", siBoth, isHandgun, 1, magPistolSatchel, "\dtaExt\equip\m\m_pipebomb",100 ]]
+_type = _type + 1
+equipDefs set [_type, ["Portable Mine", siBoth, isHandgun, 1, magPistolMine, "\dtaExt\equip\m\m_mine",100 ]]
 _type = _type + 1
 
 weaponDefs = []

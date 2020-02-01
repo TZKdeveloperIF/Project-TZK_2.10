@@ -39,7 +39,7 @@ _tv = _v call funcGetUnitTypeFromObject
 goto "CheckPrio"
   
 #MoveAir
-  _v flyInHeight 200
+  _v flyInHeight 150; _unit groupchat "Moving to support vehicle. Flying at 150m altitude. Adjust height/destination when necessary."
   #MoveAir_Check
     [_unit, getPos _support] call funcMove
     ~5
@@ -48,7 +48,7 @@ goto "CheckPrio"
     ? !(alive _v) || _v != vehicle _unit : _msg = "Support aborted."; goto "Abort"
     ? !(alive _support) : _msg = "Support aborted, support vehicle destroyed."; goto "Abort"
     ? time > _timeAbort : _msg = "Support aborted."; goto "Abort"
-    ? ([getPos _v, getPos _support] call funcDistH) > 2*rangeSupport || (speed _v) > 20 : goto "MoveAir_Check"
+    ? ([getPos _v, getPos _support] call funcDistH) > 2*rangeSupport || (speed _v) > 40 : goto "MoveAir_Check"
 
 #Hover
   _v flyInHeight 10
@@ -59,13 +59,13 @@ goto "CheckPrio"
     ? !(alive _unit) : exit
     ? call orderCheck : exit
     ? !(alive _v) || _v != vehicle _unit : _msg = "Support aborted."; goto "Abort"
-    ? !(alive _support) : _v flyInHeight 200; _msg = "Support aborted, support vehicle destroyed."; goto "Abort"
+    ? !(alive _support) : _v flyInHeight 150; _msg = "Support aborted, support vehicle destroyed."; goto "Abort"
     ? time > _timeRetry : goto "MoveAir"
     ? (_unit distance _support) > 2*rangeSupport : goto "Hover_Check"
     ; ? (_unit distance _support) > 0 : goto "Hover_Check"
 
 doStop _unit
-_v flyInHeight 200
+_v flyInHeight 150
 
 goto "CheckPrio"
 

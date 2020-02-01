@@ -59,14 +59,14 @@ _timeAbort = time + 2*60
 goto "SupportReached"
 
 #MoveAir
-  _v flyInHeight 200
+  _v flyInHeight 150
 #MoveAir_Check
   [_unit, getPos _support] call funcMoveAI
   
 	~5
 	
   ? !(alive _unit) || _v != (vehicle _unit) || !(alive _support) || time > _timeAbort : goto "Exit"
-  ? ([getPos _v, getPos _support] call funcDistH) > 2*rangeSupport || (speed _v) > 20 : goto "MoveAir_Check"
+  ? ([getPos _v, getPos _support] call funcDistH) > 2*rangeSupport || (speed _v) > 40 : goto "MoveAir_Check"
 
 #Hover
 _v flyInHeight 10
@@ -84,7 +84,7 @@ goto "SupportReached"
 
 #SupportReached
 doStop _unit
-_v flyInHeight 200
+_v flyInHeight 150
 ? _heal : [_unit, _si, _gi, _v, _vt, _support] exec "Server\AI_Heal.sqs"
 ? _rearm : [_unit, _si, _gi, _v, _vt, _support] exec "Server\AI_Rearm.sqs"
 

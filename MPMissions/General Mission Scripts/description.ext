@@ -2651,7 +2651,7 @@ class OptionsDialog: Menu
     NumberedAIBG, NumberedAI, ReportsLabel, Reports, 
     OptionsTimeLabel, OptionsGameTime, 
     MemberMarkersLabel, MemberMarkers, 
-    TransferLabel, TransferTarget, TransferAmount,Transfer, TransferAIs, TransferTake, AICheck,
+    TransferLabel, TransferTarget, TransferAmount,Transfer, TransferAIs, TransferAll, TransferTake, AICheck,
     BuyUnits, CustomSoldiers, CommandAI, CommandTemporary, ShowStats, UnitCam, SatCam, SpySatBG, SpySat,
     IncomeRatioLabel, IncomeRatio, IncomeRatioPlayer, CommanderLabel, Commander, CommanderTransfer,
     WorkerBehaviourLabel, WorkerBehaviour, AIRespawnLabel, AIRespawn,
@@ -2824,10 +2824,22 @@ class OptionsDialog: Menu
     idc = IDC+19;
     x = 0.50;
     y = 0.29;
-    w = 0.09;
+    w = 0.04;
     h = 0.03;
-    text = "Give AIs";
+    text = "AIs";
     action = "btnGiveAIs=true";
+    colorBackground[]={0.82,0.82,0.82,1};
+  };
+  
+  class TransferAll: Button
+  {
+    idc = IDC+23;
+    x = 0.55;
+    y = 0.29;
+    w = 0.04;
+    h = 0.03;
+    text = "All";
+    action = "btnGiveAll=true";
     colorBackground[]={0.82,0.82,0.82,1};
   };
   
