@@ -19,10 +19,10 @@ isHandgunSlots = 4
 isOpticsSlots = 2
 
 ; addon specific equipment used in scripts
-magMine = "Mine"
+magMine = "Mine"; magPistolMine = "Mine_Pistol_xj200"; MagzinesMine = [magMine, magPistolMine]
 magHandGrenade = "HandGrenade"
 ammoMine = "Mine"
-magSatchel = "PipeBomb"
+magSatchel = "PipeBomb"; magPistolSatchel = "PipeBomb_Pistol_xj200"; MagzinesSatchel = [magSatchel, magPistolSatchel]
 magTimeBomb = "TimeBomb"
 weaponPut = "Put"
 weaponsCustom = []
@@ -50,10 +50,10 @@ magsRespawnPlayer2 = [ ["EUDEF_MP5SD6_MAG_xj200", "EUDEF_MP5SD6_MAG_xj200", "EUD
 
 
 weaponsRespawnPlayer3 = [ ["JahSG551_xj200", "AT_AALauncherW_xj200", "Binocular", "NVGoggles"], ["mVSS_xj200", "AT_AALauncherE_xj200", "Binocular", "NVGoggles"] ]
-magsRespawnPlayer3 = [ ["JahSG551mag_xj200", "JahSG551mag_xj200", "CarlGustavIn4_xj200", "AAIn4_xj200", "Medkit_xj200", "Medkit_xj200"], ["mVSSmag_xj200", "mVSSmag_xj200", "AT4In4_xj200", "9k32In4_xj200", "Medkit_xj200", "Medkit_xj200"] ]
+magsRespawnPlayer3 = [ ["JahSG551mag_xj200", "JahSG551mag_xj200", "CarlGustavIn4_xj200", "AAIn4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"], ["mVSSmag_xj200", "mVSSmag_xj200", "AT4In4_xj200", "9k32In4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"] ]
 
 weaponsRespawnPlayer4 = [ ["JAM_M21", "AT_AALauncherW_xj200", "Binocular", "NVGoggles"], ["RFSVUa_xj200", "AT_AALauncherE_xj200", "Binocular", "NVGoggles"] ]
-magsRespawnPlayer4 = [ ["JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "CarlGustavIn4_xj200", "AAIn4_xj200", "Medkit_xj200", "Medkit_xj200"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4In4_xj200", "9k32In4_xj200", "Medkit_xj200", "Medkit_xj200"] ]
+magsRespawnPlayer4 = [ ["JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "CarlGustavIn4_xj200", "AAIn4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"], ["RFSVUAmag_xj200", "RFSVUAmag_xj200", "AT4In4_xj200", "9k32In4_xj200", magPistolSatchel, magPistolSatchel, magPistolMine, "Medkit_xj200"] ]
 
 weaponsRespawnPlayer5 = [ ["JAM_M21", "CarlGustavLauncher", "Binocular"], ["JAM_SVD", "AT4Launcher", "Binocular"] ]
 magsRespawnPlayer5 = [ ["JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "JAM_W762Sniper_20mag", "CarlGustavLauncher"], ["JAM_E762_10mag", "JAM_E762_10mag", "JAM_E762_10mag", "JAM_E762_10mag", "AT4Launcher"] ]
@@ -372,6 +372,10 @@ equipDefs set [_type, ["Smoke Shell Red", siBoth, isGeneral, 1, "SmokeShellRed",
 _type = _type + 1
 
 equipDefs set [_type, ["Medkit", siBoth, isHandgun, 1, "Medkit_xj200", "\data\sanita_02",50 ]]
+_type = _type + 1
+equipDefs set [_type, ["Portable Satchel", siBoth, isHandgun, 1, magPistolSatchel, "\dtaExt\equip\m\m_pipebomb",100 ]]
+_type = _type + 1
+equipDefs set [_type, ["Portable Mine", siBoth, isHandgun, 1, magPistolMine, "\dtaExt\equip\m\m_mine",100 ]]
 _type = _type + 1
 
 weaponDefs = []

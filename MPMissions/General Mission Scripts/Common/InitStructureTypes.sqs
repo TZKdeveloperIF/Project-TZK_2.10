@@ -109,7 +109,7 @@ _price = [4500, 9000] select PricingMode
 _objects0 = [["Mortar5_W_xj200", 0, [0,5,0.1]],["CommCenterW_xj200",0,[15,0,0]]]
 _objects1 = [["Mortar5_E_xj200", 0, [0,5,0.1]],["CommCenterE_xj200",0,[15,0,0]]]
 _image = ["Player\Mortar.jpg","Player\Mortar.jpg"]
-structDefs set [_type, ["Mortar 60mm", _price, siBoth, _image, false, true, 6, 2, 10, _objects0, _objects1, ["Server\InitSecondaryStructure.sqs"], []] ]
+structDefs set [_type, ["Mortar 60mm", _price, siBoth, _image, false, true, 6, 2, 10, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], []] ]
 _mortar = _type
 _type = _type + 1
 
@@ -117,8 +117,24 @@ _price = [6000, 12000] select PricingMode
 _objects0 = [["Mortar6_W_xj200", 0, [0,5,0.1]],["CommCenterW_xj200",0,[15,0,0]]]
 _objects1 = [["Mortar6_E_xj200", 0, [0,5,0.1]],["CommCenterE_xj200",0,[15,0,0]]]
 _image = ["Player\Mortar.jpg","Player\Mortar.jpg"]
-structDefs set [_type, ["Mortar 60mm+", _price, siBoth, _image, false, true, 6, 2, 10, _objects0, _objects1, ["Server\InitSecondaryStructure.sqs"], []] ]
+structDefs set [_type, ["Mortar 60mm+", _price, siBoth, _image, false, true, 6, 2, 10, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], []] ]
 _mortar2 = _type
+_type = _type + 1
+
+_price = [3000, 6000] select PricingMode
+_objects0 = [["M46_W_DKMM_xj200", 0, []]]
+_objects1 = [["M46_E_DKMM_xj200", 0, []]]
+_image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
+structDefs set [_type, ["M46 Fieldgun", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], []] ]
+_m46 = _type
+_type = _type + 1
+
+_price = [15000, 30000] select PricingMode
+_objects0 = [["M46_W_DKMM_Art_xj200", 0, []]]
+_objects1 = [["M46_E_DKMM_Art_xj200", 0, []]]
+_image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
+structDefs set [_type, ["M46 Art", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], []] ]
+_m46Art = _type
 _type = _type + 1
 
 _price = [500, 1000] select PricingMode
@@ -182,6 +198,13 @@ _objects = [ ["DVD_v2_roof", 0, [0,0,4.5]] ]
 _image = ["Player\Roof.jpg","Player\Roof.jpg"]
 structDefs set [_type, ["Roof", _price, siBoth, _image, true, false, 30, 1, 20, _objects, _objects, ["Server\InitSecondaryStructure.sqs"], []] ]
 _roof = _type
+_type = _type + 1
+
+_price = [600, 1200] select PricingMode
+_objects = [ ["DVD_v2_roof", 0, [0,0,9]] ]
+_image = ["Player\Roof.jpg","Player\Roof.jpg"]
+structDefs set [_type, ["Roof High", _price, siBoth, _image, true, false, 30, 1, 20, _objects, _objects, ["Server\InitSecondaryStructure.sqs"], []] ]
+_roofHigh = _type
 _type = _type + 1
 
 _price = [200, 400] select PricingMode
@@ -249,7 +272,13 @@ structsCritcal = [stComm, stBarracks, stLight, stHeavy, stAir]
 structsDestroy = [stComm, stBarracks, stLight, stHeavy, stAir, stShip, stradarair, stradar, stSatRec]
 structsFactory = [stBarracks, stLight, stHeavy, stAir, stShip]
 
-structsDefence = [_mortar, _mgFort, _mgTowerWood, _mgTowerConcrete, _mg, _gunf, _mortar2]
+structsDefence = [_mortar, _mgFort, _mgTowerWood, _mgTowerConcrete, _mg, _gunf, _mortar2, _m46, _m46Art]
+structsOccupiableMortar = [_mortar, _mortar2]
+structsOccupiableMGGround = [_mg, _mgFort]
+structsOccupiableMGTower = [_mgTowerWood, _mgTowerConcrete]
+structsOccupiableGunfort = [_gunf]
+structsOccupiableM46 = [_m46]
+structsOccupiableM46Art = [_m46Art]
 
 ; do server stuff only
 ? !(local LocalServerObject) : Exit

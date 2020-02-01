@@ -2,6 +2,7 @@
 
 dev = false
 debug = true
+_bool_Infantry_Mode = false; _bool_NeutralTown_Mode = false; _bool_SEMod_Mode = false
 
 ; CONSTANTS
 si0 = 0
@@ -24,7 +25,7 @@ costWorker = 400
 maxWorkers = [10, 10]
 rangeSupport = 25; rangeSupportPlane = 30; rangeGetPlaneFlyingStatus = 150
 sendDelay = 1.0
-deleteUnitDelay = [5*60, 60] select dev
+deleteUnitDelay = [3*60, 60] select dev
 maxFlightAltitude = 800
 maxFlightAltitudePlus = 700
 costRepairMHQ = 30000
@@ -82,7 +83,7 @@ WeatherChosen = (param2 % 100) % 8
 ZeroTime = ( (param2 % 100) - WeatherChosen ) / 8
 viewDistance = param2 - (param2 % 100)
 SkipTime ([0,9,15,21,0] select ZeroTime)
-? ZeroTime == 4 : [] exec "Server\Timeboost.sqs"
+? ZeroTime == 4 : [60] exec "Common\TimeSkip.sqs"
 PricingMode = 0
 setViewDistance viewDistance
 ;player globalchat format ["fixedStartPos=%1, timeLimit=%2, maxGroupSize=%3, viewDistance=%4" ,fixedStartPos, timeLimit, maxGroupSize, viewDistance]
@@ -121,7 +122,7 @@ upgTrackArtBullet = _type; 		upgDefs set [_type, ["Track Art Bullet", [10000, 10
 
 upgWorkers = _type; 			upgDefs set [_type, ["Upgrade Workers", [5000, 100] select dev, [2, 0] select dev]]; _type=_type+1
 
-upgGunshipRocket = _type; 		upgDefs set [_type, ["Helicopter Rockets", [20000, 100] select dev, [3, 0] select dev]]; _type=_type+1
+upgGunshipRocket = _type; 		upgDefs set [_type, ["Helicopter Rockets", [25000, 100] select dev, [3, 0] select dev]]; _type=_type+1
 
 upgPlaneAfterBurner = _type; 	upgDefs set [_type, ["Plane After Burner", [20000, 100] select dev, [3, 0] select dev]]; _type=_type+1
 
@@ -218,9 +219,12 @@ groupCommander set [_si, (groupMatrix select _si) select 0]
 	? _i < _c : goto "InitSide1Groups"
 #Side1Empty
 InitStructureReady = false
+
+_initUnitTypes = "Common\InitUnitTypes.sqs"; _initStructureTypes = "Common\InitStructureTypes.sqs"
+? _bool_Infantry_Mode : _initUnitTypes = "Common\InitUnitTypes_Infantry_Mode.sqs"; _initStructureTypes = "Common\InitStructureTypes_Infantry_Mode.sqs"
 [] exec "Common\InitPublicVariables.sqs"
-[] exec "Common\InitStructureTypes.sqs"
-[] exec "Common\InitUnitTypes.sqs"
+[] exec _initStructureTypes
+[] exec _initUnitTypes
 [] exec "Common\InitInfoMsgTypes.sqs"
 [] exec "Common\InitEquipmentTypes.sqs"
 
@@ -501,7 +505,7 @@ _type = _type + 1
 ;_type = _type + 1
 
 ;orderOccupy = _type
-;OccupyTypeDefs = ["All Defense", "Mortar", "MG Fort", "MG Tower", "MG", "Gun Fort"]
+;OccupyTypeDefs = ["All Defense", "Mortar", "MG Ground", "MG Tower", "M46", "M46 Art", "Gun Fort"]
 ;_param0 = [ "Waypoint", "count (wpCO select siPlayer)", "_posRelTown = ((wpCO select siPlayer) select _this) call funcCalcTownDirDistFromPos; format[""co%1 %2"", _this, [_posRelTown, """"] select ((((wpCO select siPlayer) select _this) select 0) == -1)]" ]
 ;_param1 = [ "Structure type", "count OccupyTypeDefs", "format [""%1"", OccupyTypeDefs select _this ]" ]
 ;_param2 = [ "Occupy Radius", "10", "format [""%1m"", 50*(_this+1)]" ]
@@ -589,7 +593,7 @@ orderTempDefs set [_type, ["Reclaim", [_param0, _param1, _param2, _param3, _para
 _type = _type + 1
 
 orderTempOccupy = _type
-OccupyTypeDefs = ["All Defense", "Mortar", "MG Fort", "MG Tower", "MG", "Gun Fort"]
+OccupyTypeDefs = ["All Defense", "Mortar", "MG Ground", "MG Tower", "M46", "M46 Art", "Gun Fort"]
 _param0 = [ "Waypoint", "count (wpCO select siPlayer)", "_posRelTown = ((wpCO select siPlayer) select _this) call funcCalcTownDirDistFromPos; format[""co%1 %2"", _this, [_posRelTown, """"] select ((((wpCO select siPlayer) select _this) select 0) == -1)]" ]
 _param1 = [ "Structure type", "count OccupyTypeDefs", "format [""%1"", OccupyTypeDefs select _this ]" ]
 _param2 = [ "Occupy Radius", "20", "format [""%1m"", 50*(_this+1)]" ]
@@ -725,8 +729,8 @@ _type = _type + 1
 
 ; orderTemp entry format: [orderTempID, orderTempType, [param0, param1, ...]]
 orderTempMatrix = [ [], [] ]
-_si = si0; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClear, []] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
-_si = si1; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClear, []] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
+_si = si0; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClearUnit, [0]] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
+_si = si1; _gi = 0; { (orderTempMatrix select _si) set [ _gi, [-1, orderTempClearUnit, [0]] ]; _gi = _gi + 1 } foreach (groupMatrix select _si)
 
 
 ; WAYPOINTS
@@ -826,7 +830,7 @@ townGroups = [ [], [] ]
 workerGroups = [ [groupWorker00, groupWorker01, groupWorker02], [groupWorker10, groupWorker11, groupWorker12] ]
 timeReinforceTown = 3*60
 
-? (local LocalServerObject): [] exec "Server\InitServer.sqs"
+? (local LocalServerObject): [_bool_Infantry_Mode, _bool_NeutralTown_Mode, _bool_SEMod_Mode] exec "Server\InitServer.sqs"
 ? !(local LocalServerObject): [] exec "Player\InitClient.sqs"
 
 ;player globalchat "init.sqs Exit"
