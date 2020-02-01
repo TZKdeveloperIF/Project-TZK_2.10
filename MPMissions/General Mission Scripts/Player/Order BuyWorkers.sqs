@@ -5,7 +5,7 @@ _pos = _this select 1
 _amount = ((_this select 2) select 0) + 1
 
 
-
+if (groupPlayer != (groupCommander select siPlayer)) then {_unit groupChat "Only allow Commander to buy workers."; exit}
 ? !(alive _unit) : exit
 ? _unit != vehicle _unit : if (_unit == driver _unit) then {_unit groupChat "Only allow asking infantry to do this."}; exit
 _si = siPlayer

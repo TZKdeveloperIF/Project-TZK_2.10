@@ -9,7 +9,8 @@ _timeDead = 0
 #Init
   [_unit, siPlayer, 200] exec "Common\EventAdd_InfantryKilled.sqs"
 	[_unit] exec "Player\AddPlayerActions.sqs"
-	_unit addEventHandler ["Fired",{ [_this select 0, nearestObject[_this select 0, _this select 4] ] exec "Player\LimitWeaponRange.sqs" }]
+	; The AnimChanged-EH is available since 1.99
+	_unit addEventHandler ["AnimChanged", "_this exec {Player\Event_AnimChanged_WW4.sqs}"]; _unit addEventHandler ["Fired",{ [_this select 0, nearestObject[_this select 0, _this select 4] ] exec "Player\LimitWeaponRange.sqs" }]
 
 	_posOld = positionRespawn; _posNow = positionRespawn; _timeOld = -3600; _timeNow = -3600;
 	_unitsStart = []; _unitsStarted = []
@@ -117,7 +118,8 @@ _timeDead = 0
 
 	[_unit] exec "Player\AddPlayerActions.sqs"
 
-	_unit addEventHandler ["Fired",{ [_this select 0, nearestObject[_this select 0, _this select 4] ] exec "Player\LimitWeaponRange.sqs" }]
+	; The AnimChanged-EH is available since 1.99
+	_unit addEventHandler ["AnimChanged", "_this exec {Player\Event_AnimChanged_WW4.sqs}"]; _unit addEventHandler ["Fired",{ [_this select 0, nearestObject[_this select 0, _this select 4] ] exec "Player\LimitWeaponRange.sqs" }]
 
 	_posOld = _posRespawn
 	_posNow = _posRespawn
