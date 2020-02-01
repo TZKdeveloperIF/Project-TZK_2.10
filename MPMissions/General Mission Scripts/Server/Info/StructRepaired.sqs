@@ -12,7 +12,9 @@ _percent = _percent - (_percent % 1)
 _value = mtStructRepaired
 _value = _value + (TotalInfoTypes)*_percent
 _value = _value + (TotalInfoTypes*101)*_gi
-_value = _value + (TotalInfoTypes*101*GroupsNum)*_type
-_value = _value + (TotalInfoTypes*101*GroupsNum*10)*_si
+_value = _value + (TotalInfoTypes*101*GroupsNum)*_si
 
-[_value] exec "Server\Info\SendInfoMsg.sqs"
+; The type of repariable structure has been raised to 1000
+_value2 = _type
+
+[_value, _value2] exec "Server\Info\SendInfoMsg.sqs"

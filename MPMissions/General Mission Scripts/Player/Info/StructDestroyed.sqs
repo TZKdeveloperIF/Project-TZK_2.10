@@ -2,10 +2,10 @@
 
 _value = _this select 0
 
-_type = _value % 10
+_type = _value % 1000
 _value = _value - _type
 
-_si = _value/10
+_si = _value/1000
 
 _structName = (structDefs select _type) select sdName
 _timestring = [] call funcGetTimeString 

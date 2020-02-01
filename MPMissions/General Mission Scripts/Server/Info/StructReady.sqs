@@ -5,6 +5,6 @@ _type = _this select 1
 
 _value = mtStructReady
 _value = _value + (TotalInfoTypes)*_type
-_value = _value + (TotalInfoTypes*10)*_si
+_value = _value + (TotalInfoTypes*1000)*_si
 
 [_value] exec "Server\Info\SendInfoMsg.sqs"

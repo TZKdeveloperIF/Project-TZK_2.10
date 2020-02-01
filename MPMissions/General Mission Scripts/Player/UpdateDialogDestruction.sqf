@@ -10,7 +10,7 @@ _idcList = _this select 0;
 _MCVs = MCV select siPlayer;
 
 _index = 0;
-_count = count structsDestroy;
+_count = count (structsDestroy + structsDefence);
 _structsDisp = [];
 _MCVs = MCV select siPlayer;
 if ((count _MCVs) > 0) then
@@ -25,7 +25,7 @@ if ((count _MCVs) > 0) then
 };
 while "_index < _count" do
 {
-	_type = structsDestroy select _index;
+	_type = (structsDestroy + structsDefence) select _index;
 	_name = (structDefs select _type) select sdName;
 	_image = ( (structDefs select _type) select sdImage ) select siPlayer;
 	_structs = [siPlayer, _type] call funcGetWorkingStructuresWithinCCRange;

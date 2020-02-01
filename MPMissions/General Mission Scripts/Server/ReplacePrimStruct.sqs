@@ -33,6 +33,7 @@ _part = _parts select 0
 _object = (_part select 0) createVehicle _posStruct
 _object setDir _dir
 _object setPos _posStruct
+if (isNull gunner _object) then { [_object] exec "Common\AddRearmData.sqs" };
 
 
 [_si, _type] exec "Server\Info\StructReady.sqs"; [_objectDestroyed] exec "Server\primStructsPlacedRemove.sqs"

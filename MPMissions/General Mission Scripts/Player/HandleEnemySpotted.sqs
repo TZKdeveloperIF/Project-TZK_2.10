@@ -11,6 +11,6 @@ _textType = ""
 
 _textPos = (getPos _enemy) call funcCalcTownDirDistFromPos
 ? _textType != "" : format["Enemy %1 spotted at %2", _textType, _textPos] call funcSideMsg
-(getPos _enemy) exec "Player\SetEnemyMarker.sqs"
+[getPos _enemy, _textType] exec "Player\SetEnemyMarker.sqs"
 
 groupPlayer reveal _enemy

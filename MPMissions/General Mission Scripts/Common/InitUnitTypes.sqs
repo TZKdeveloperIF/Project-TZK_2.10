@@ -1520,23 +1520,23 @@ vehiclesStart = []
 
 
 #lowres
-vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, 0]], [ _jeepW, [0, -40]] ] ]
-vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, 0]],  [ _uazE, [0, -40]] ] ]
+vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, -40]], [ _jeepW, [0, -40]] ] ]
+vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, -40]],  [ _uazE, [0, -40]] ] ]
 goto "next"
 
 #midres
-vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, 0]], [ _supportTruckW, [0, -40]] ] ]
-vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, 0]], [ _supportTruckE, [0, -40]] ] ]
+vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, -40]], [ _supportTruckW, [0, -40]] ] ]
+vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, -40]], [ _supportTruckE, [0, -40]] ] ]
 goto "next"
 
 #hires
-vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, 0]], [ _supportAPCW, [-20, -25]],  [ _supportTruckW, [20, -25]]  ] ]
-vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, 0]], [ _supportAPCE, [-20, -25]],  [ _supportTruckE, [20, -25]]  ] ]
+vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, -40]], [ _supportAPCW, [-20, -25]],  [ _supportTruckW, [20, -25]]  ] ]
+vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, -40]], [ _supportAPCE, [-20, -25]],  [ _supportTruckE, [20, -25]]  ] ]
 goto "next"
 
 #hires2
-vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, 0]], [ _supportAPCW, [-20, -25]], [ _supportAPCW, [20, -25]], [ _m2a2d, [0, -50]], [ _supportTruckW, [40, -25]]  ] ]
-vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, 0]], [ _supportAPCE, [-20, -25]], [ _supportAPCE, [20, -25]], [ _bmp2d, [0, -50]], [ _supportTruckE, [40, -25]]  ] ]
+vehiclesStart set [si0, [ [ _truckW, [0, -25]],[_hummerW3, [20, -40]], [ _supportAPCW, [-20, -25]], [ _supportAPCW, [20, -25]], [ _m2a2d, [0, -50]], [ _supportTruckW, [40, -25]]  ] ]
+vehiclesStart set [si1, [ [ _truckE, [0, -25]],[  _brdmE3, [20, -40]], [ _supportAPCE, [-20, -25]], [ _supportAPCE, [20, -25]], [ _bmp2d, [0, -50]], [ _supportTruckE, [40, -25]]  ] ]
 goto "next"
 
 #next

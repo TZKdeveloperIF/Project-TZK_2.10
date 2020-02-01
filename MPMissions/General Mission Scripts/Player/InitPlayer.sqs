@@ -114,7 +114,7 @@ _i = 0; while "_i < countWPPlayer" do { wpPlayer set [_i, [-1,-1]]; _i = _i + 1 
 timeLastWaypointSet = 0
 
 
-mutexBuildStructure = false
+mutexBuildStructure = false; mutexOrderBuildStructure = false
 mutexMoneyStatus = false; mutexMoneySpent = false
 mutexSendCancelBuy = false; mutexqPlayer = false
 KilledTank = []; mutexKilledTankEffect = false
@@ -310,7 +310,6 @@ _param0 = ["Town", count towns, "format[""%1"", (towns select _this) select tdNa
 _param1 = ["Mine Radius", 10, "format[""%1m"", 5*(_this)]", 6]
 aiOrders set [_type, ["Mine Town Flag", [_param0, _param1], false, "Order MineFlag.sqs", _desc] ]; _type = _type + 1
 
-
 _desc = "Units will patrol town and take town back if it is lost."
 _param0 = ["Town", count towns, "format[""%1"", (towns select _this) select tdName]", -1]
 _param1 = ["Patrol Radius", 5, "format[""%1m"", 50*(_this+1)]", 1]
@@ -321,6 +320,16 @@ aiOrders set [_type, ["Clear Order", [], false, "Clear Order.sqs", _desc] ]; _ty
 
 _desc = "Disband selected units."
 aiOrders set [_type, ["Disband", [], true, "DisbandUnits.sqs", _desc] ]; _type = _type + 1
+
+_desc = "Ask your group member get close to the factory out of CC range and help buy units."
+BuyFactoryDefs = ["Barrack", "Light", "Ship", "Heavy", "Air"]
+_param0 = ["Factory Type", count BuyFactoryDefs, "BuyFactoryDefs select _this", 0]
+aiOrders set [_type, ["Buy Units", [_param0], false, "Order BuyUnits.sqs", _desc] ]; _type = _type + 1
+
+_desc = "Ask your group member get close to the destination and help build structure (the position must close enough to MHQ\MCV\Support Vehicle)."
+_param0 = ["Structure Type", count structDefs, "format[""%1"", (structDefs select _this) select sdName]", 0]
+_param1 = ["Angle", 24, "format[""%1%2"", 15*(_this), [["" (N)"", "" (NE)"", "" (E)"", "" (SE)"", "" (S)"", "" (SW)"", "" (W)"", "" (NW)""] select ((_this - (_this mod 3))/3), {}] select (_this mod 3 != 0)]", 0]
+aiOrders set [_type, ["Build Struct", [_param0, _param1], false, "Order BuildStructure.sqs", _desc] ]; _type = _type + 1
 
 _desc = "Force selected units to join other group. Custom soldiers may perform abnormal when they go rearm after having jointed other groups."
 _param0 = ["Group", count callsigns, "format[""%1"", callsigns select _this]", -1]

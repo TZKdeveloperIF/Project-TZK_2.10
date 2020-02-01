@@ -153,11 +153,11 @@ _type = _type + 1
 ; _staticHowitzer = _type
 ; _type = _type + 1
 
-_price = [25000, 50000] select PricingMode
+_price = [15000, 30000] select PricingMode
 _objects0 = [["M46_W_DKMM_Art_xj200", 0, []]]
 _objects1 = [["M46_E_DKMM_Art_xj200", 0, []]]
 _image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
-structDefs set [_type, ["M46 Art", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitSecondaryStructure.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
+structDefs set [_type, ["M46 Art", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureArtM46.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
 _m46Art = _type
 _type = _type + 1
 
