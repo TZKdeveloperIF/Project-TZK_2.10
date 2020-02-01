@@ -36,7 +36,8 @@ while "_i<_c" do
 	_obj = (_part select 0) createVehicle _posPart;
 	_obj setDir _dirPart;
 	_obj setPos _posPart;
-		
+	
+	if (isNull gunner _obj) then { [_obj] exec "Common\AddRearmData.sqs" };
 	_objects set [count _objects, _obj];
 
 	_i=_i+1;

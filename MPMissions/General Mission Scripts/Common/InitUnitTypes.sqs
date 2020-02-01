@@ -1143,7 +1143,7 @@ unitDefs set [_type, ["T72 Res", 3000, _si, 0, "T72Res", "it72", _st, [3, _crewR
 _t72R = _type
 _type = _type + 1
 
-unitDefs set [_type, ["T80 Res", 5000, _si, 0, "T80Res_Yellow_xj200", "it80", _st, [3, _crewR], _mTank, ["Common\EquipTownVehicles.sqs"]] ]
+unitDefs set [_type, ["T80 Res", 5000, _si, 0, "T80Res_xj200", "it80", _st, [3, _crewR], _mTank, ["Common\EquipTownVehicles.sqs"]] ]
 _t80R = _type
 _type = _type + 1
 
