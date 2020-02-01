@@ -129,21 +129,21 @@ structDefs set [_type, ["Mortar 60mm", _price, siBoth, _image, false, true, 6, 2
 _mortar = _type
 _type = _type + 1
 
-_price = [6000, 12000] select PricingMode
-_objects0 = [["Mortar6_W_xj200", 0, [0,5,0.1]],["CommCenterW_xj200",0,[15,0,0]]]
-_objects1 = [["Mortar6_E_xj200", 0, [0,5,0.1]],["CommCenterE_xj200",0,[15,0,0]]]
-_image = ["Player\Mortar.jpg","Player\Mortar.jpg"]
-structDefs set [_type, ["Mortar 60mm+", _price, siBoth, _image, false, true, 6, 2, 10, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
-_mortar2 = _type
-_type = _type + 1
+; _price = [6000, 12000] select PricingMode
+; _objects0 = [["Mortar6_W_xj200", 0, [0,5,0.1]],["CommCenterW_xj200",0,[15,0,0]]]
+; _objects1 = [["Mortar6_E_xj200", 0, [0,5,0.1]],["CommCenterE_xj200",0,[15,0,0]]]
+; _image = ["Player\Mortar.jpg","Player\Mortar.jpg"]
+; structDefs set [_type, ["Mortar 60mm+", _price, siBoth, _image, false, true, 6, 2, 10, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
+; _mortar2 = _type
+; _type = _type + 1
 
-_price = [3000, 6000] select PricingMode
-_objects0 = [["M46_W_DKMM_xj200", 0, []]]
-_objects1 = [["M46_E_DKMM_xj200", 0, []]]
-_image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
-structDefs set [_type, ["M46 Fieldgun", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
-_m46 = _type
-_type = _type + 1
+; _price = [3000, 6000] select PricingMode
+; _objects0 = [["M46_W_DKMM_xj200", 0, []]]
+; _objects1 = [["M46_E_DKMM_xj200", 0, []]]
+; _image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
+; structDefs set [_type, ["M46 Fieldgun", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
+; _m46 = _type
+; _type = _type + 1
 
 ; _price = [4000, 8000] select PricingMode
 ; _objects0 = [["M109_Static_xj200", 0, []]]
@@ -153,13 +153,13 @@ _type = _type + 1
 ; _staticHowitzer = _type
 ; _type = _type + 1
 
-_price = [15000, 30000] select PricingMode
-_objects0 = [["M46_W_DKMM_Art_xj200", 0, []]]
-_objects1 = [["M46_E_DKMM_Art_xj200", 0, []]]
-_image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
-structDefs set [_type, ["M46 Art", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
-_m46Art = _type
-_type = _type + 1
+; _price = [15000, 30000] select PricingMode
+; _objects0 = [["M46_W_DKMM_Art_xj200", 0, []]]
+; _objects1 = [["M46_E_DKMM_Art_xj200", 0, []]]
+; _image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
+; structDefs set [_type, ["M46 Art", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitStructureDefenceTower.sqs"], ["Player\InitStructureMarker.sqs"], _mM46] ]
+; _m46Art = _type
+; _type = _type + 1
 
 _price = [500, 1000] select PricingMode
 _objects0 = [["StaticMG_12mm7_W_xj200", 0, [1.4,1.3,2.0]], ["DVD_v2_fort", 0, []]]
@@ -321,17 +321,17 @@ baseDefs = []
 
 _base = []
 _prims = []
-_prims set [count _prims, [stHeavy, 0.5, [-18, -60], 90] ]
+_prims set [count _prims, [stBarracks, 5, [-6.5, 0], 0] ]
+_prims set [count _prims, [stBarracks, 5, [6.5, 0], 0] ]
+_prims set [count _prims, [stBarracks, 0.5, [-18, -60], 90] ]
 _prims set [count _prims, [stHeavy, 0.5, [0, -80], 0] ]
-_prims set [count _prims, [stHeavy, 0.5, [20, -60], 270] ]
+_prims set [count _prims, [stBarracks, 0.5, [20, -60], 270] ]
 _prims set [count _prims, [stHeavy, 0.5, [7, 25], 180] ]
 _prims set [count _prims, [stLight, 0.5, [-9, 24.5], 90] ]
 _prims set [count _prims, [stComm, 2, [21, 24], 0] ]
 _prims set [count _prims, [stradar, 2, [30, 30], 0] ]
 _prims set [count _prims, [stSatRec, 2, [30, 40], 0] ]
 _prims set [count _prims, [stradarair, 2, [50, 50], 0] ]
-_prims set [count _prims, [stBarracks, 5, [-6.5, 0], 0] ]
-_prims set [count _prims, [stBarracks, 5, [6.5, 0], 0] ]
 _prims set [count _prims, [stAir, 5, [0, -60], 180] ]
 _base set [0, _prims]
 
