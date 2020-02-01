@@ -1,0 +1,17 @@
+; args: [Logic Object, Vehicle Name]
+; The X,Y Coordinates of Logic has a -100000 correction to avoid creating near an actual object thus will spawn at ideal coordinate accurately.
+; The vehicle name depends on the MOD version. It's wise to make it same with the type(class) name of the actual vehicle and being including in Logic Objects' name. "Format" can be applied easily basing on this setting.
+
+_logic = _this select 0
+_name = _this select 1
+
+_pos = getPos _logic
+_x = (_pos select 0) + 100000
+_y = (_pos select 1) + 100000
+_z = (_pos select 2)
+
+_killedTank = nearestObject [ [_x, _y, _z], _name ]
+
+? !isNull _killedTank && !alive _killedTank : [_killedTank] exec {\TZK_Objects\Scripts\KilledBurnEffect\csla_burn_HeavyArmouredUnits.sqs}
+
+; EOF

@@ -1,0 +1,6 @@
+_vehicle = _this select 0
+	_vehicle say "rampasndc130"
+	_vehicle animate ["rampa",0]
+	_vehicle animate ["rampa1",0]
+	? (isengineon _vehicle):_vehicle animate ["door1",0];_vehicle animate ["door2",0];_vehicle animate ["door3",0];
+exit

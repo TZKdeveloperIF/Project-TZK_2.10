@@ -1,0 +1,40 @@
+; args: tank
+; The "EngineState" of Engine-EH is always false on remote vehicle thus when using it as a trigger of EH its actual effect is local (since remote vehicles' EngineState is false). However the critical effect of this script is only "animate" which has the global effect thus unnecessary to activate the EH on other client.
+
+? !local _this : exit
+
+_speedold = 0
+
+#check
+
+            ?!isengineon _this : goto "ende"
+
+            _speed = speed _this
+
+            ? (_speed < .5 && _speed > -.5) : goto "break"
+
+            _factor = (_speed - _speedold)/9
+
+            _this animate ["suspension", (.5 + _factor)]
+
+            ~0.1
+
+            _speedold = _speed
+
+            goto "check"
+
+#break
+
+            _this animate ["suspension", .5]
+
+            @(speed _this > .5 || speed _this < -.5)
+
+            _speedold = 0
+
+            goto "check"
+
+#ende
+
+            _this animate ["suspension", .5]
+
+            exit

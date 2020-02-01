@@ -1,0 +1,12 @@
+; args: [vehicle]
+_plane = _this select 0
+
+; Don't add Effect to dedicated server. In Mission Editor LocalServerObject isn't defined thus "local LocalServerObject" return bool and effects will be remain.
+? local LocalServerObject : if (isNull player) then {exit}
+
+? (typeOf _plane) in ["A10_Tomahawk_xj200", "Su25_Raduga_xj200"] : _plane say {NuclearMissileReady_xj200}
+
+; Only add Effects to local vehicles. It seems even though script of Fired-EH activated only on local client still not enough yet.
+? !(local _plane) : exit
+
+_plane addEventHandler [{Fired}, { if (local (_this select 0)) then {_this exec {\TZK_Objects\Scripts\ffurFired.sqs}; _this exec {\TZK_Objects\Scripts\ffurMissileFlame.sqs}} }]

@@ -1,0 +1,53 @@
+; args: [target, ammo, whoFired]
+_target = _this select 0
+
+? "_x=={SpoofSwitch_xj200}" count magazines _target > 0 : goto "EOF"
+
+; this script can be used in TZK CTI only, since it uses some functions defined in CTI missions.
+; it's possible to transplant them into addons or other missions but this remain to those editors
+
+? !alive _target: goto "EOF"
+? !isengineon _target: goto "EOF"
+
+; Can't spoof if out of SpoofMags
+? "_x=={SpoofCount_xj200}" count magazines _target == 0 : goto "EOF"
+
+; Invalid random chance in flare scripts. random number isn't same in all client thus don't check
+
+
+; Who's the bad guy?
+_enemy = _this select 2
+
+; And what did he fire?
+_weaponname = _this select 1
+
+; Get the missile object that was launched at us
+_missile = nearestobject [_enemy, _weaponname]
+
+; Wait till the missile is close
+_timeAbort = time + 10
+@ (_missile distance _target < 400 || _timeAbort < time)
+; can't spoof missile fired very close
+? _timeAbort < time || _missile distance _target < 250 : goto "EOF"
+
+; Check if Spoof chanse left
+? "_x=={SpoofCount_xj200}" count magazines _target == 0 : goto "EOF"
+
+; create flare effect
+_count =0
+
+#LaunchLoop
+drop["kouleSvetlo","","Billboard",0.05,6,[-.2,-1,1.1],[-14-random 6,- random 2,0],0,1.8,1,0,[1],[[1,1,0.3,1]],[0,1],0,0,"\TZK_Objects\Scripts\SpoofSmokes.sqs","",_target] 
+
+drop["kouleSvetlo","","Billboard",0.05,6,[.2,-1,1.1],[14+random 6,- random 2,0],0,1.8,1,0,[1],[[1,1,0.3,1]],[0,1],0,0,"\TZK_Objects\Scripts\SpoofSmokes.sqs","",_target]
+
+_count = _count + 1
+
+
+
+~.1
+
+?(_count<5):goto "LaunchLoop"
+
+#EOF
+exit

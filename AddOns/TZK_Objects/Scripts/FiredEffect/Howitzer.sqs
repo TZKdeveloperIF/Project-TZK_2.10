@@ -1,0 +1,23 @@
+; args: Fired-EH array
+
+_howitzer = _this select 0
+_weapon = _this select 1
+
+? !(_weapon in [{Sprut_2A75_xj200},{Gun155_xj200},{PLA155Gun_xj200}, {Gun130_DKMM_xj200}]) : exit
+
+_size = 155
+; 2S25 use 125mm radius for tracing while M46 use 130mm
+? _weapon == {Sprut_2A75_xj200} : _size = 125
+? _weapon == {Gun130_DKMM_xj200} : _size = 130
+
+[_this, _size] exec {\TZK_Objects\Scripts\FiredEffect\TracerMainGun_COC.sqs}
+
+; _TracerScriptName = ["TracerM109Gun", "Tracer2S25Gun"] select ("2S25_Sprut_SD_xj200" countType [_howitzer] > 0)
+; call format ["_this exec {\TZK_Objects\Scripts\%1.sqs}", _TracerScriptName]
+
+_this exec {\TZK_Objects\Scripts_CTI\ImpactPointMarker.sqs}
+_this call loadFile {\TZK_Objects\Scripts\stvol.sqf}
+
+; The line including "loadFile" seems must at the end of file because those codes after that line seems won't be executed.
+
+; EOF

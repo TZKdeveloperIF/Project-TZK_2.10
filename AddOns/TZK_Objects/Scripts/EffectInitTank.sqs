@@ -1,0 +1,13 @@
+; args: [vehicle]
+_tank = _this select 0
+
+; Don't add Effect to dedicated server. In Mission Editor LocalServerObject isn't defined thus "local LocalServerObject" return bool and effects will be remain.
+? local LocalServerObject : if (isNull player) then {exit}
+
+; Only add Effects to local vehicles. It seems even though script of Fired-EH activated only on local client still not enough yet.
+? !(local _tank) : exit
+
+_tank addEventHandler [{Fired}, { if (local (_this select 0)) then {_shot = (nearestObject [_this select 0, _this select 4]); [_shot, getPos _shot, getDir _shot, velocity _shot, speed _shot, typeOf _shot, _this] exec {\TZK_Objects\Scripts\SLXTankMGEffect.sqs}; if ((typeOf (_this select 0)) in ["M1A2_INQ_xj200","Leo2A6_xj200","T90_xj200"]) then {_this exec {\TZK_Objects\Scripts\GunRecoil.sqs}}; if ((typeOf (_this select 0)) in ["ZTZ99_xj200"]) then {_this exec {\TZK_Objects\Scripts\GunRecZTZ99.sqs}}; } }]
+
+? ("ZTZ99_xj200" countType [_tank] > 0) : _tank addEventHandler [{Engine}, {  if (local (_this select 0)) then {if (_this select 1) Then {(_this select 0) exec {\TZK_Objects\Scripts\99_Tank_Accel.sqs}}}  }]
+? ("M1A2_INQ_xj200" countType [_tank] > 0) : _tank addEventHandler [{Engine}, {  if (local (_this select 0)) then {if (_this select 1) then {(_this select 0) exec {\INQ_M1\Scripts\INQ_M1_Tank_Accel.sqs}}}  }]
