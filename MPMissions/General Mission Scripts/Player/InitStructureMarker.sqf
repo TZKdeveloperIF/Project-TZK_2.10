@@ -24,7 +24,6 @@ while "_i<maxStructureMarkers && !_done" do
 		_m setMarkerSize [0.8, 0.8];
 		if (_mt in ["End", "UnknownStructure_Marker_xj200"]) then { _m setMarkerSize [0.4,0.4] };
 		(StructureMarkerMapping select _si) set [_i, _structure];
-		if (siPlayer in [_si, siCiv]) then {_m setMarkerPos getPos _structure};
 		_i = _i + 1;
 	};
 	_done = true;

@@ -145,7 +145,14 @@ while "_si < 2" do
 	{
 		_v = (StructureMarkerMapping select _si) select _i;
 		_m = format["Structure_%1_%2", _si, _i];
-		if (isNull _v) then { _m setMarkerPos hiddenMarkerPos };
+		if (isNull _v) then
+		{
+			_m setMarkerPos hiddenMarkerPos;
+		}
+		else
+		{
+			_m setMarkerPos getPos _v;
+		};
 		_i=_i+1;
 	};
 	_si = _si + 1;

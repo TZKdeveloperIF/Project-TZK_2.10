@@ -3,7 +3,7 @@
 ; VARIABLES SENT BY SERVER AND PLAYERS
 
 ; Ver 2.00 Variables
-pvJoinApply = -1; pvJoinReply = -1; pvJoinReceive = -1; pvJoinTried = -1; pvJoinUnits = objNull; mutexJoinServer = false; mutexSendJoinApply = false
+pvJoinApply = -1; pvJoinReply = -1; pvJoinReceive = -1; pvJoinUnits = objNull; mutexJoinServer = false; mutexSendJoinApply = false
 pvKilledTank = objNull; pvKilledAircraft = objNull; pvKilledBoat = objNull
 pvAfterBurnerON = objNull; pvAfterBurnerOFF = objNull;
 pvNuclearX = 0; pvNuclearY = 0; pvNuclearZ = 0;
