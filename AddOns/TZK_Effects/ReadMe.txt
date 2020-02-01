@@ -1,3 +1,0 @@
-Main part of mateirals setting in config.cpp is from OFPMaterials (https://forums.bohemia.net/forums/topic/180137-ofp-materials/?tab=comments#comment-2837257) made by kenoxite.
-
-The purpose to create this file is to add extra support to those units imported to TZK but not included by OFPMaterials, remove some un-used textures from list to save loading time, and make it convenient for players to remove Effects if they dislike it.

@@ -1,7 +1,0 @@
-; args: [vehicle]
-_virtual = _this select 0
-
-; Don't add Effect to dedicated server. In Mission Editor LocalServerObject isn't defined thus "local LocalServerObject" return bool and effects will be remain.
-? local LocalServerObject : if (isNull player) then {exit}
-
-_virtual addEventHandler [{Fired}, {if (local (_this select 0)) then {_this exec {\TZK_Objects\Scripts\VirtualFired.sqs}}}]

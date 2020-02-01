@@ -1,7 +1,0 @@
-; args: [vehicle]
-_mortar = _this select 0
-
-; Don't add Effect to dedicated server. In Mission Editor LocalServerObject isn't defined thus "local LocalServerObject" return bool and effects will be remain.
-? local LocalServerObject : if (isNull player) then {exit}
-
-_mortar addEventHandler [{Fired}, {_this exec {\TZK_Objects\Scripts_CTI\ImpactPointMarker.sqs}}]
