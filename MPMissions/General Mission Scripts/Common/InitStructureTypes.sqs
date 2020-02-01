@@ -121,12 +121,20 @@ structDefs set [_type, ["Mortar 60mm+", _price, siBoth, _image, false, true, 6, 
 _mortar2 = _type
 _type = _type + 1
 
-_price = [6000, 12000] select PricingMode
+_price = [3000, 6000] select PricingMode
 _objects0 = [["M46_W_DKMM_xj200", 0, []]]
 _objects1 = [["M46_E_DKMM_xj200", 0, []]]
 _image = ["\dkmm_m46\m46.paa","\dkmm_m46\m46.paa"]
 structDefs set [_type, ["M46 Fieldgun", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitSecondaryStructure.sqs"], []] ]
 _m46 = _type
+_type = _type + 1
+
+_price = [4000, 8000] select PricingMode
+_objects0 = [["M109_Static_xj200", 0, []]]
+_objects1 = [["PLZ05_Static_xj200", 0, []]]
+_image = ["\TZK_Objects\Texture\DKMM_M109A6G.paa","\TZK_Objects\Texture\PLZ05.paa"]
+structDefs set [_type, ["Howitzer", _price, siBoth, _image, false, false, 15, 2, 25, _objects0, _objects1, ["Server\InitSecondaryStructure.sqs"], []] ]
+_staticHowitzer = _type
 _type = _type + 1
 
 _price = [25000, 50000] select PricingMode
@@ -265,7 +273,7 @@ structsCritcal = [stComm, stBarracks, stLight, stHeavy, stAir]
 structsDestroy = [stComm, stBarracks, stLight, stHeavy, stAir, stShip, stradarair, stradar, stSatRec]
 structsFactory = [stBarracks, stLight, stHeavy, stAir, stShip]
 
-structsDefence = [_mortar, _mgFort, _mgTowerWood, _mgTowerConcrete, _mg, _gunf, _mortar2]
+structsDefence = [_mortar, _mgFort, _mgTowerWood, _mgTowerConcrete, _mg, _gunf, _mortar2, _m46, _m46Art, _staticHowitzer]
 
 ; do server stuff only
 ? !(local LocalServerObject) : Exit

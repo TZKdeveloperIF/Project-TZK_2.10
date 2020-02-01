@@ -143,7 +143,7 @@ _timeReinforce = time + _interval
 #AddTank
   _type = -1
   while "_type == -1" do { _type = (armorTown select _si) call funcGetRandomUnitType }
-  _pos = [_posFlag, 150, 150] call funcGetRandomPos
+  _pos = [_posFlag, 12, 13] call funcGetRandomPos
   [_type, 1, 1, 0, _pos, random 360, _si, -1, _group, 0, 0] exec "Common\AddUnit.sqs"
   ; player globalchat format["AddTank: %1", (towns select _ti) select tdName]
   goto "Patrol"
