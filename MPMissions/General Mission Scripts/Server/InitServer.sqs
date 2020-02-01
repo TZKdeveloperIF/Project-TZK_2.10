@@ -39,6 +39,7 @@ funcUpdateTownCheckUnits = preprocessFile "Server\UpdateTownCheckUnits.sqf"
 funcAddServerUnit = preprocessFile "Server\AddServerUnit.sqf"
 funcUpdateResStartPos = preprocessFile "Server\UpdateResStartPos.sqf"
 funcUpdateResPatrolPos = preprocessFile "Server\UpdateResPatrolPos.sqf"
+funcUpdateResPatrolTowns = preprocessFile "Server\UpdateResPatrolTowns.sqf"
 funcUpdateResPatrolDestroy = preprocessFile "Server\UpdateResPatrolDestroy.sqf"
 funcAssignJoinAI = preprocessFile "Server\AssignJoinAI.sqf"
 

@@ -95,9 +95,9 @@ _town = objNull
 
 ;	{ if (_x == driver vehicle _x) then { _x doMove ([_posPatrol, 10, 20] call funcGetRandomPos) } } foreach (units _group)
 ;		; player globalchat Format ["UpdatePatrollingResTank.sqs: Patrol: _posPatrol=%1", _posPatrol]
-	[_group] call loadFile {Server\UpdateResPatrolTowns.sqf}
+	[_group] call funcUpdateResPatrolTowns
 		goto "Update"
 
 #Destroy
-	[_group] call loadFile {Server\UpdateResPatrolDestroy.sqf}
+	[_group] call funcUpdateResPatrolDestroy
 	goto "Update"
